@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 7.2.2 on 2020-03-22 10:36:35.
+ * Generated for Laravel 7.2.2 on 2020-03-26 15:20:12.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -19389,6 +19389,13 @@ namespace Illuminate\Support {
     class Fluent {}
 }
 
+namespace App\Models {
+    /**
+    * @method \Illuminate\Database\Eloquent\Collection|Song[]|Song create($attributes = [])
+    * @method \Illuminate\Database\Eloquent\Collection|Song[]|Song make($attributes = [])
+    */
+    class SongFactoryBuilder extends \Illuminate\Database\Eloquent\FactoryBuilder {}
+}
 namespace App\Models {
     /**
     * @method \Illuminate\Database\Eloquent\Collection|User[]|User create($attributes = [])

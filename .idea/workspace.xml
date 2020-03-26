@@ -13,6 +13,9 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
@@ -125,6 +128,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1Yi8lxYAt4KEkn9Mv0vMPMFeo8B" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -133,19 +137,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/factories" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\projects\api.cpmusic\resources\lang\vi" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\projects\api.cpmusic\tests\Unit\UserControllerTest" />
       <recent name="E:\projects\api.cpmusic\tests\Unit\Show" />
       <recent name="E:\projects\api.cpmusic\app\Http\Controllers\API" />
       <recent name="E:\projects\api.cpmusic\app\Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\projects\api.cpmusic\database\factories" />
+      <recent name="E:\projects\api.cpmusic\resources\lang\vi" />
     </key>
   </component>
   <component name="RunManager">
@@ -209,7 +214,7 @@
       <workItem from="1585027356017" duration="641000" />
       <workItem from="1585039325696" duration="650000" />
       <workItem from="1585048858707" duration="247000" />
-      <workItem from="1585232244895" duration="21000" />
+      <workItem from="1585232244895" duration="4720000" />
     </task>
     <servers />
   </component>
@@ -227,10 +232,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Inspections" timestamp="1585232264932">
+    <state x="552" y="178" key="#Inspections" timestamp="1585234802911">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1585232264932" />
+    <state x="552" y="178" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1585234802911" />
     <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1584017122853">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
