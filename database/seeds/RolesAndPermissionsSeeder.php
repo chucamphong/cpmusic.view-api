@@ -32,7 +32,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $role = Role::create(['name' => 'mod']);
         $role->givePermissionTo([
-            'create.users', 'view.users', 'update.users',
+            'create.users', 'view.users', 'update.users', 'delete.users',
             'view.me', 'update.me'
         ]);
 

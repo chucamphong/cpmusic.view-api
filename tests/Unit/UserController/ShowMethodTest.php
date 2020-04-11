@@ -41,7 +41,7 @@ class ShowMethodTest extends TestCase
 
         $abilities = $user->getPermissionsViaRoles()->map(function ($permission) {
             return $permission['name'];
-        });
+        })->all();
 
         Sanctum::actingAs($user, $abilities);
 
@@ -70,7 +70,7 @@ class ShowMethodTest extends TestCase
 
         $abilities = $user->getPermissionsViaRoles()->map(function ($permission) {
             return $permission['name'];
-        });
+        })->all();
 
         Sanctum::actingAs($user, $abilities);
 
@@ -105,7 +105,7 @@ class ShowMethodTest extends TestCase
 
         $abilities = $currentUser->getPermissionsViaRoles()->map(function ($permission) {
             return $permission['name'];
-        });
+        })->all();
 
         Sanctum::actingAs($currentUser, $abilities);
 
@@ -140,7 +140,7 @@ class ShowMethodTest extends TestCase
 
         $abilities = $currentUser->getPermissionsViaRoles()->map(function ($permission) {
             return $permission['name'];
-        });
+        })->all();
 
         Sanctum::actingAs($currentUser, $abilities);
 

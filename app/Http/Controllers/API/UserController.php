@@ -6,17 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $this->authorize('viewAny', $request->user());
+
+        $users = QueryBuilder::for(User::class)
+            ->allowedFields(['id', 'name', 'email'])
+            ->allowedFilters(['id', 'name', 'email'])
+            ->allowedSorts('id')
+            ->jsonPaginate();
+
+        return UserResource::collection($users);
     }
 
     /**
@@ -58,13 +68,23 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(User $user)
     {
-        //
+        $this->authorize('delete', $user);
+
+        try {
+            $user->delete();
+            return response()->json([
+                'message' => "Xóa thành công tài khoản $user->name"
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Xóa thất bại'
+            ], Response::HTTP_EXPECTATION_FAILED);
+        }
     }
 }

@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc984d1b-30d9-4484-b6e1-21c93b797293" name="Default Changelist" comment="" />
+    <list default="true" id="bc984d1b-30d9-4484-b6e1-21c93b797293" name="Default Changelist" comment="Cập nhật cơ sở dữ liệu">
+      <change beforePath="$PROJECT_DIR$/.idea/cpmusic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cpmusic.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TokenCan.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/UserResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/UserResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Policies/UserPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/UserPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RolesAndPermissionsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesAndPermissionsSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/UserController/ShowMethodTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/UserController/ShowMethodTest.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,9 +42,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
-      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
@@ -38,7 +54,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
@@ -125,6 +140,9 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-query-builder" />
       <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-json-api-paginate" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Yi8lxYAt4KEkn9Mv0vMPMFeo8B" />
@@ -153,11 +171,25 @@
       <recent name="E:\projects\api.cpmusic\resources\lang\vi" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.DeleteMethodTest.khong_the_truy_cap_neu_chua_dang_nhap">
+    <configuration name="DeleteMethodTest.khong_the_truy_cap_neu_chua_dang_nhap" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Unit\UserController\DeleteMethodTest" file="$PROJECT_DIR$/tests/Unit/UserController/DeleteMethodTest.php" method="khong_the_truy_cap_neu_chua_dang_nhap" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ShowMethodTest.khong_duoc_phep_lay_thong_tin_khi_chua_dang_nhap" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Unit\UserController\ShowMethodTest" file="$PROJECT_DIR$/tests/Unit/UserController/ShowMethodTest.php" method="khong_duoc_phep_lay_thong_tin_khi_chua_dang_nhap" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.DeleteMethodTest.khong_the_truy_cap_neu_chua_dang_nhap" />
+        <item itemvalue="PHPUnit.ShowMethodTest.khong_duoc_phep_lay_thong_tin_khi_chua_dang_nhap" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -215,6 +247,10 @@
       <workItem from="1585039325696" duration="650000" />
       <workItem from="1585048858707" duration="247000" />
       <workItem from="1585232244895" duration="4720000" />
+      <workItem from="1585823101018" duration="5730000" />
+      <workItem from="1586426338975" duration="4544000" />
+      <workItem from="1586444006675" duration="976000" />
+      <workItem from="1586584496152" duration="8315000" />
     </task>
     <servers />
   </component>
@@ -232,10 +268,18 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="622" y="122" width="690" height="796" key="#DeleteMethodTest.khong_the_truy_cap_neu_chua_dang_nhap" timestamp="1586590867026">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="622" y="122" width="690" height="796" key="#DeleteMethodTest.khong_the_truy_cap_neu_chua_dang_nhap/0.0.1920.1040@0.0.1920.1040" timestamp="1586590867026" />
     <state x="552" y="178" key="#Inspections" timestamp="1585234802911">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1585234802911" />
+    <state x="622" y="122" width="690" height="796" key="#ShowMethodTest.khong_duoc_phep_lay_thong_tin_khi_chua_dang_nhap" timestamp="1586585161214">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="622" y="122" width="690" height="796" key="#ShowMethodTest.khong_duoc_phep_lay_thong_tin_khi_chua_dang_nhap/0.0.1920.1040@0.0.1920.1040" timestamp="1586585161214" />
     <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1584017122853">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -244,10 +288,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="133" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584068384778" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584008066143">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586590978088">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584008066143" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586590978088" />
+    <state x="583" y="65" key="CommitChangelistDialog2" timestamp="1586597667998">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="583" y="65" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586597667998" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585041965800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

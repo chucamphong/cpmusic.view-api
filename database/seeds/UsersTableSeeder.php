@@ -13,18 +13,27 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         factory(User::class)->create([
-            'name' => 'Chu Cẩm Phong',
-            'email' => 'chucamphong@gmail.com',
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
         ])->assignRole('admin');
 
         factory(User::class)->create([
-            'name' => 'Nguyễn Xuân Hòa',
-            'email' => 'nguyenxuanhoa@gmail.com',
+            'name' => 'Admin 2',
+            'email' => 'admin2@gmail.com',
+        ])->assignRole('admin');
+
+        factory(User::class)->create([
+            'name' => 'Mod',
+            'email' => 'mod@gmail.com',
         ])->assignRole('mod');
 
         factory(User::class)->create([
-            'name' => 'Dương Việt Hoàng',
-            'email' => 'duongviethoang@gmail.com',
+            'name' => 'Member',
+            'email' => 'member@gmail.com',
         ])->assignRole('member');
+
+        for ($i = 0; $i < 500; $i++) {
+            factory(User::class)->create()->assignRole('member');
+        }
     }
 }
