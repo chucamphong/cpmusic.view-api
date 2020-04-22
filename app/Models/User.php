@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -39,4 +39,8 @@ class User extends Authenticatable
     ];
 
     protected $with = ["roles:id,name", "roles.permissions"];
+
+    public function setPasswordAttribute(string $password) {
+        $this->attributes['password'] = \Hash::make($password);
+    }
 }

@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         factory(User::class)->create([
-            'name' => 'Admin',
+            'name' => 'Chu Cẩm Phong',
             'email' => 'admin@gmail.com',
         ])->assignRole('admin');
 
@@ -23,16 +23,18 @@ class UsersTableSeeder extends Seeder
         ])->assignRole('admin');
 
         factory(User::class)->create([
-            'name' => 'Mod',
             'email' => 'mod@gmail.com',
         ])->assignRole('mod');
 
         factory(User::class)->create([
-            'name' => 'Member',
+            'email' => 'mod2@gmail.com',
+        ])->assignRole('mod');
+
+        factory(User::class)->create([
             'email' => 'member@gmail.com',
         ])->assignRole('member');
 
-        for ($i = 0; $i < 500; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             factory(User::class)->create()->assignRole('member');
         }
     }

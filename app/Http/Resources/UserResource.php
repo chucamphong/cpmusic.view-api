@@ -27,6 +27,9 @@ class UserResource extends JsonResource
             $this->mergeWhen($this->email, [
                 'email' => $this->email
             ]),
+            $this->mergeWhen($this->avatar, [
+                'avatar' => $this->avatar
+            ]),
             $this->mergeWhen($this->email_verified_at, [
                 'email_verified_at' => $this->email_verified_at
             ]),
@@ -36,11 +39,11 @@ class UserResource extends JsonResource
                     // Replace ký tự . đầu tiên thành # để sửa lỗi explode cắt lố
                     // Ví dụ: update.users.permissions nếu để nguyên thì nó sẽ cắt thành 3 giá trị
                     // Nên replace lại thành update#user.permissions thì sẽ ra được actions và subject mong muốn
-                    [$actions, $subject] = \Str::of($value['name'])
+                    [$action, $subject] = \Str::of($value['name'])
                         ->replaceFirst('.', '#')
                         ->explode('#');
                     return [
-                        'actions' => $actions,
+                        'action' => $action,
                         'subject' => $subject
                     ];
                 })

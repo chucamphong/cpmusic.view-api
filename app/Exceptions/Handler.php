@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
@@ -69,6 +71,22 @@ class Handler extends ExceptionHandler
                         'message' => 'Bạn gửi request quá nhiều'
                     ], Response::HTTP_TOO_MANY_REQUESTS);
             }
+        }
+
+        if ($exception instanceof ModelNotFoundException) {
+            return \response()->json([
+                'data' => [
+                    'message' => 'Không tìm thấy dữ liệu'
+                ]
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        if ($exception instanceof AuthorizationException) {
+            return \response()->json([
+                'data' => [
+                    'message' => 'Bạn không có quyền thao tác'
+                ]
+            ], Response::HTTP_FORBIDDEN);
         }
 
         return parent::render($request, $exception);

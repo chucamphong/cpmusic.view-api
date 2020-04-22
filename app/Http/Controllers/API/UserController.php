@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +49,7 @@ class UserController extends Controller
      */
     public function show(string $user, Request $request)
     {
-        $user = ($user === 'me') ? $request->user() : User::find($user);
+        $user = ($user === 'me') ? $request->user() : User::findOrFail($user);
 
         $this->authorize('view', $user);
 
@@ -56,15 +57,41 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param UpdateRequest $request
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
-        //
+        $this->authorize('update', $user);
+
+        $data = $request->only('name', 'password', 'avatar');
+
+        // Cập nhật chức vụ
+        if ($request->has('role')) {
+            $user->syncRoles($request->get('role'));
+        }
+
+        // Cập nhật lại dữ liệu
+        if (!$user->update($data)) {
+            // Đăng xuất khỏi tất cả các thiết bị đang đăng nhập nếu cập nhật chức vụ hoặc mật khẩu
+            if ($request->has('role') || $request->has('password')) {
+                $user->tokens()->delete();
+            }
+
+            return response()->json([
+                'data' => [
+                    'message' => "Không thể cập nhật tài khoản $user->name"
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'data' => [
+                'message' => "Cập nhật thành công tài khoản $user->name"
+            ]
+        ]);
     }
 
     /**
