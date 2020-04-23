@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\StoreRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -13,9 +14,11 @@ use Spatie\QueryBuilder\QueryBuilder;
 class UserController extends Controller
 {
     /**
+     * Trả về danh sách tài khoản (có phân trang)
      * @param Request $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @noinspection PhpUndefinedMethodInspection
      */
     public function index(Request $request)
     {
@@ -34,14 +37,41 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $this->authorize('create', User::class);
+
+        $data = $request->only('name', 'email', 'password', 'avatar');
+        $model = User::create($data);
+
+        // Nếu có trường role trong request
+        if ($request->has('role')) {
+            // Chỗ kiểm tra quyền create.users.role sẽ được xử StoreRequest xử lý
+            $model->assignRole($request->get('role'));
+
+            return response()->json([
+                'data' => [
+                    'message' => "Tạo tài khoản $model->name thành công"
+                ]
+            ], Response::HTTP_CREATED);
+        } else {
+            $model->assignRole('member');
+
+            return response()->json([
+                'data' => [
+                    'message' => "Tạo thành công tài khoản $model->name"
+                ]
+            ], Response::HTTP_CREATED);
+        }
     }
 
     /**
+     * Lấy thông tin của tài khoản
+     * Nếu $user là me thì sẽ lấy thông tin của chính tài khoản đó
+     * Ngược lại sẽ lấy theo $user->id
      * @param string $user
      * @param Request $request
      * @return UserResource
@@ -57,6 +87,7 @@ class UserController extends Controller
     }
 
     /**
+     * Cập nhật thông tin cho tài khoản
      * @param UpdateRequest $request
      * @param User $user
      * @return \Illuminate\Http\JsonResponse
@@ -73,23 +104,25 @@ class UserController extends Controller
             $user->syncRoles($request->get('role'));
         }
 
-        // Cập nhật lại dữ liệu
-        if (!$user->update($data)) {
+        // Chỉnh sửa thành công
+        if ($user->update($data)) {
             // Đăng xuất khỏi tất cả các thiết bị đang đăng nhập nếu cập nhật chức vụ hoặc mật khẩu
             if ($request->has('role') || $request->has('password')) {
                 $user->tokens()->delete();
             }
 
+            // Trả về thông báo thành công
             return response()->json([
                 'data' => [
-                    'message' => "Không thể cập nhật tài khoản $user->name"
+                    'message' => "Cập nhật thành công tài khoản $user->name"
                 ]
             ]);
         }
 
+        // Trả về thông báo thất bại
         return response()->json([
             'data' => [
-                'message' => "Cập nhật thành công tài khoản $user->name"
+                'message' => "Không thể cập nhật tài khoản $user->name"
             ]
         ]);
     }

@@ -21,10 +21,17 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // Quản lý thành viên
         Permission::create(['name' => 'create.users']);
+        Permission::create(['name' => 'create.users.role']);
         Permission::create(['name' => 'view.users']);
         Permission::create(['name' => 'update.users']);
         Permission::create(['name' => 'update.users.permissions']);
         Permission::create(['name' => 'delete.users']);
+
+        // Quản lý bài hát
+        Permission::create(['name' => 'create.songs']);
+        Permission::create(['name' => 'view.songs']);
+        Permission::create(['name' => 'update.songs']);
+        Permission::create(['name' => 'delete.songs']);
 
         /** @var Role $role */
         $role = Role::create(['name' => 'admin']);
@@ -33,7 +40,8 @@ class RolesAndPermissionsSeeder extends Seeder
         $role = Role::create(['name' => 'mod']);
         $role->givePermissionTo([
             'create.users', 'view.users', 'update.users', 'delete.users',
-            'view.me', 'update.me'
+            'view.me', 'update.me',
+            'create.songs', 'view.songs', 'update.songs', 'delete.songs',
         ]);
 
         // or may be done by chaining

@@ -29,9 +29,9 @@ class UserPolicy
         return false;
     }
 
-    public function create(User $user)
+    public function create(User $currentUser)
     {
-        //
+        return $currentUser->can('create.users') && $currentUser->tokenCan('create.users');
     }
 
     public function update(User $currentUser, User $user)
