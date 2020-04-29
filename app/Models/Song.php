@@ -60,6 +60,26 @@ class Song extends Model
         return $this->belongsToMany(Artist::class);
     }
 
+    public function setArtist(...$artists) {
+        $artists = collect($artists)
+            ->flatten()
+            ->map(function ($artist) {
+                if (empty($artist)) {
+                    return false;
+                }
+                return Artist::whereName($artist)->first();
+            })
+            ->filter(function ($artist) {
+                return $artist instanceof Artist;
+            })
+            ->map->id
+            ->all();
+
+        $this->artists()->sync($artists);
+
+        return $this;
+    }
+
     /**
      * Xóa bỏ dấu cách và dấu trong câu
      * @return string
@@ -75,6 +95,9 @@ class Song extends Model
         return $query->where('name', 'LIKE', "%$name%")
             ->orWhere('other_name', 'LIKE', "%$name%")
             ->orWhereHas('category', function (Builder $query) use ($name) {
+                return $query->where('name', 'LIKE', "%$name%");
+            })
+            ->orWhereHas('artists', function (Builder $query) use ($name) {
                 return $query->where('name', 'LIKE', "%$name%");
             });
     }
