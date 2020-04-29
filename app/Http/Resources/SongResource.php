@@ -28,10 +28,10 @@ class SongResource extends JsonResource
                 'other_name' => $this->other_name
             ]),
             $this->mergeWhen($this->thumbnail, [
-                'thumbnail' => $this->thumbnail
+                'thumbnail' => asset(\Storage::url($this->thumbnail))
             ]),
             $this->mergeWhen($this->url, [
-                'url' => $this->url
+                'url' => asset(\Storage::url($this->url)),
             ]),
             $this->mergeWhen($this->year, [
                 'year' => $this->year
