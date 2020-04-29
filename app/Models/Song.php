@@ -5,39 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * App\Models\Song
- *
- * @property int $id
- * @property string $name
- * @property string $other_name
- * @property string $thumbnail
- * @property string $url
- * @property string $year
- * @property int $views
- * @property int $category_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Artist[] $artists
- * @property-read int|null $artists_count
- * @property-read \App\Models\Category $category
- * @property-read string $slug
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song search($name)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereOtherName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereThumbnail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereViews($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Song whereYear($value)
- * @mixin \Eloquent
- */
 class Song extends Model
 {
     protected $fillable = [
@@ -56,10 +23,19 @@ class Song extends Model
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * Tạo dựng mối quan hệ với bảng nghệ sĩ
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function artists() {
         return $this->belongsToMany(Artist::class);
     }
 
+    /**
+     * Gán ca sĩ vào bài hát
+     * @param mixed ...$artists
+     * @return $this
+     */
     public function setArtist(...$artists) {
         $artists = collect($artists)
             ->flatten()
@@ -83,6 +59,7 @@ class Song extends Model
     /**
      * Xóa bỏ dấu cách và dấu trong câu
      * @return string
+     * @noinspection PhpUnused
      */
     public function getSlugAttribute(): string
     {
