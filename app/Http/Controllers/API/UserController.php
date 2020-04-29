@@ -143,7 +143,7 @@ class UserController extends Controller
             ]);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Xóa thất bại'
+                'message' => "Xóa thất bại tài khoản $user->name"
             ], Response::HTTP_EXPECTATION_FAILED);
         }
     }

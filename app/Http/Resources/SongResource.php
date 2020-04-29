@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Song;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class SongResource extends JsonResource
@@ -14,6 +15,39 @@ class SongResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        /** @var Song|$this $this */
+
+        return [
+            $this->mergeWhen($this->id, [
+                'id' => $this->id
+            ]),
+            $this->mergeWhen($this->name, [
+                'name' => $this->name
+            ]),
+            $this->mergeWhen($this->other_name, [
+                'other_name' => $this->other_name
+            ]),
+            $this->mergeWhen($this->thumbnail, [
+                'thumbnail' => $this->thumbnail
+            ]),
+            $this->mergeWhen($this->url, [
+                'url' => $this->url
+            ]),
+            $this->mergeWhen($this->year, [
+                'year' => $this->year
+            ]),
+            $this->mergeWhen($this->views, [
+                'views' => $this->views
+            ]),
+            $this->mergeWhen($this->category, [
+                'category' => $this->category
+            ]),
+            $this->mergeWhen($this->artists, [
+                'artists' => $this->artists->each(function ($artist) {
+                    unset($artist['pivot']);
+                    return $artist;
+                })
+            ])
+        ];
     }
 }

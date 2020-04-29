@@ -2,8 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Category;
-use App\Models\Song;
+use App\Models\Artist;
 use Faker\Generator as Faker;
 
 /*
@@ -17,14 +16,9 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Song::class, function (Faker $faker) {
+$factory->define(Artist::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'other_name' => $faker->name,
-        'thumbnail' => $faker->imageUrl(),
-        'url' => $faker->url,
-        'year' => $faker->year,
-        'views' => $faker->randomNumber(),
-        'category_id' => Category::inRandomOrder()->first()->id,
+        'avatar' => $faker->imageUrl(),
     ];
 });
