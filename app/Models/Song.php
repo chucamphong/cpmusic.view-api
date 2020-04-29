@@ -31,12 +31,22 @@ class Song extends Model
         return $this->belongsToMany(Artist::class);
     }
 
+    public function setCategory(string $category): Song {
+        $category = Category::whereName($category)->first();
+
+        $this->category()->associate($category);
+
+        $this->save();
+
+        return $this;
+    }
+
     /**
      * Gán ca sĩ vào bài hát
      * @param mixed ...$artists
      * @return $this
      */
-    public function setArtist(...$artists) {
+    public function setArtist(...$artists): Song {
         $artists = collect($artists)
             ->flatten()
             ->map(function ($artist) {
