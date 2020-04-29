@@ -19,5 +19,13 @@ class CategoriesTableSeeder extends Seeder
         Category::create([
             'name' => 'Nhạc trữ tình'
         ]);
+
+        Category::create([
+            'name' => 'Nhạc Hàn Quốc'
+        ]);
+
+        Category::create([
+            'name' => 'Nhạc Nhật Bản'
+        ]);
     }
 }
