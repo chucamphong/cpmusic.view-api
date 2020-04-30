@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\UserController;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Faker\Factory as Faker;
 

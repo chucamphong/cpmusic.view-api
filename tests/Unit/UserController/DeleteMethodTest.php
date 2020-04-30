@@ -3,7 +3,6 @@
 namespace Tests\Unit\UserController;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
@@ -11,15 +10,6 @@ use Tests\TestCase;
  */
 class DeleteMethodTest extends TestCase
 {
-//    use RefreshDatabase;
-//
-//    protected function setUp(): void
-//    {
-//        parent::setUp();
-//
-//        $this->seed(\RolesAndPermissionsSeeder::class);
-//    }
-
     /**
      * @test
      * @testdox Không thể truy cập vào API xóa tài khoản nếu chưa đăng nhập

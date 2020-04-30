@@ -3,8 +3,6 @@
 namespace Tests\Unit\UserController;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 /**
@@ -18,7 +16,7 @@ class ShowMethodTest extends TestCase
      */
     public function khong_duoc_phep_lay_thong_tin_khi_chua_dang_nhap()
     {
-        $user = factory(User::class)->create()->assignRole('member');
+        $user = $this->createUser();
 
         $response = $this->getJson(route('users.show', $user->id));
 
@@ -31,13 +29,9 @@ class ShowMethodTest extends TestCase
      */
     public function co_the_lay_thong_tin_cua_ban_than_sau_khi_dang_nhap_voi_id_la_me()
     {
-        $user = factory(User::class)->create()->assignRole('member');
+        $user = $this->createUser();
 
-        $abilities = $user->getPermissionsViaRoles()->map(function ($permission) {
-            return $permission['name'];
-        })->all();
-
-        Sanctum::actingAs($user, $abilities);
+        $this->login($user);
 
         $response = $this->getJson(route('users.show', $user->id));
 
@@ -60,13 +54,9 @@ class ShowMethodTest extends TestCase
      */
     public function co_the_lay_thong_tin_cua_ban_than_sau_khi_dang_nhap_voi_id_cua_tai_khoan()
     {
-        $user = factory(User::class)->create()->assignRole('member');
+        $user = $this->createUser();
 
-        $abilities = $user->getPermissionsViaRoles()->map(function ($permission) {
-            return $permission['name'];
-        })->all();
-
-        Sanctum::actingAs($user, $abilities);
+        $this->login($user);
 
         $response = $this->getJson(route('users.show', 'me'));
 
@@ -97,11 +87,7 @@ class ShowMethodTest extends TestCase
         $currentUser->assignRole($role)->save();
         $otherUser->assignRole($otherRole)->save();
 
-        $abilities = $currentUser->getPermissionsViaRoles()->map(function ($permission) {
-            return $permission['name'];
-        })->all();
-
-        Sanctum::actingAs($currentUser, $abilities);
+        $this->login($currentUser);
 
         $response = $this->getJson(route('users.show', $otherUser->id));
 
@@ -132,11 +118,7 @@ class ShowMethodTest extends TestCase
         $currentUser->assignRole($role)->save();
         $otherUser->assignRole($otherRole)->save();
 
-        $abilities = $currentUser->getPermissionsViaRoles()->map(function ($permission) {
-            return $permission['name'];
-        })->all();
-
-        Sanctum::actingAs($currentUser, $abilities);
+        $this->login($currentUser);
 
         $response = $this->getJson(route('users.show', $otherUser->id));
 
