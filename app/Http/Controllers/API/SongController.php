@@ -12,16 +12,17 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class SongController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Song::class);
+    }
+
     /**
-     * @param Request $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @noinspection PhpUndefinedMethodInspection
      */
-    public function index(Request $request)
+    public function index()
     {
-        $this->authorize('viewAny', $request->user());
-
         $songs = QueryBuilder::for(Song::class)
             ->allowedFields(
                 'id', 'name', 'other_name', 'thumbnail', 'url', 'year', 'views', 'category_id',
@@ -45,12 +46,9 @@ class SongController extends Controller
     /**
      * @param Song $song
      * @return SongResource
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Song $song)
     {
-        $this->authorize('view', $song);
-
         return SongResource::make($song);
     }
 
@@ -62,12 +60,9 @@ class SongController extends Controller
     /**
      * @param Song $song
      * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Song $song)
     {
-        $this->authorize('delete', $song);
-
         try {
             $song->delete();
             return response()->json([
