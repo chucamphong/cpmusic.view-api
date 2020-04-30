@@ -19,23 +19,6 @@ class UpdateMethodTest extends TestCase
         $this->seed(\RolesAndPermissionsSeeder::class);
     }
 
-    private function getAbilities(User $user)
-    {
-        return $user->getPermissionsViaRoles()->map(function ($permission) {
-            return $permission['name'];
-        })->all();
-    }
-
-    private function login(User $user)
-    {
-        Sanctum::actingAs($user, $this->getAbilities($user) ?? []);
-    }
-
-    private function createUser($role = 'member')
-    {
-        return factory(User::class)->create()->assignRole($role);
-    }
-
     /**
      * @test
      * @testdox Không được phép truy cập api cập nhật tài khoản khi chưa đăng nhập
