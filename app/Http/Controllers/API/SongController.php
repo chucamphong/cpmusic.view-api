@@ -42,9 +42,16 @@ class SongController extends Controller
         //
     }
 
+    /**
+     * @param Song $song
+     * @return SongResource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function show(Song $song)
     {
-        //
+        $this->authorize('view', $song);
+
+        return SongResource::make($song);
     }
 
     public function update(Request $request, Song $song)

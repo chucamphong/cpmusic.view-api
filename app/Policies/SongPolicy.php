@@ -30,7 +30,7 @@ class SongPolicy
      */
     public function view(User $user, Song $song)
     {
-        //
+        return $user->can('view.songs') && $user->tokenCan('view.songs');
     }
 
     /**
