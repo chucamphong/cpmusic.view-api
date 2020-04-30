@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Artist;
 use App\Models\Song;
 use App\Models\User;
+use App\Policies\ArtistPolicy;
 use App\Policies\SongPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -19,7 +21,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Models' => 'App\Policies\ModelPolicy',
         User::class => UserPolicy::class,
-        Song::class => SongPolicy::class
+        Song::class => SongPolicy::class,
+        Artist::class => ArtistPolicy::class,
     ];
 
     /**
