@@ -6,17 +6,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Faker\Factory as Faker;
 
+/**
+ * @group UserController
+ */
 class UpdateMethodTest extends TestCase
 {
-    use RefreshDatabase;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->seed(\RolesAndPermissionsSeeder::class);
-    }
-
     /**
      * @test
      * @testdox Không được phép truy cập api cập nhật tài khoản khi chưa đăng nhập

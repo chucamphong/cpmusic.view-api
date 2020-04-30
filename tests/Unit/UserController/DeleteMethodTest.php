@@ -6,16 +6,19 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+/**
+ * @group UserController
+ */
 class DeleteMethodTest extends TestCase
 {
-    use RefreshDatabase;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->seed(\RolesAndPermissionsSeeder::class);
-    }
+//    use RefreshDatabase;
+//
+//    protected function setUp(): void
+//    {
+//        parent::setUp();
+//
+//        $this->seed(\RolesAndPermissionsSeeder::class);
+//    }
 
     /**
      * @test

@@ -7,17 +7,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
+/**
+ * @group UserController
+ */
 class ShowMethodTest extends TestCase
 {
-    use RefreshDatabase;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->seed(\RolesAndPermissionsSeeder::class);
-    }
-
     /**
      * @test
      * @testdox Không được phép lấy thông tin tài khoản khi chưa đăng nhập

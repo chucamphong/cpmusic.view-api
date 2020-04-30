@@ -10,15 +10,6 @@ use Tests\TestCase;
  */
 class IndexMethodTest extends TestCase
 {
-    use RefreshDatabase;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->seed(\RolesAndPermissionsSeeder::class);
-    }
-
     /**
      * @test
      * @testdox Báo lỗi nếu truy cập api khi chưa đăng nhập
