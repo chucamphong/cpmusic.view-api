@@ -2,9 +2,7 @@
 
 namespace Tests\Unit\UserController;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 use Faker\Factory as Faker;
 
