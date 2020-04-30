@@ -10,15 +10,9 @@ class ArtistPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param User $user
-     * @return mixed
-     */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
-        //
+        return $user->can('view.artists') && $user->tokenCan('view.artists');
     }
 
     /**

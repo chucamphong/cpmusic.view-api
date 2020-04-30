@@ -3,18 +3,23 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ArtistResource;
+use App\Models\Artist;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ArtistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
+        $this->authorizeResource(Artist::class);
+    }
 
+    public function index(): ArtistResource
+    {
+        $artists = QueryBuilder::for(Artist::class)->get();
+
+        return ArtistResource::make($artists);
     }
 
     /**
@@ -31,10 +36,10 @@ class ArtistController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Artist $artist)
     {
         //
     }
@@ -43,10 +48,10 @@ class ArtistController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Artist $artist)
     {
         //
     }
@@ -54,10 +59,10 @@ class ArtistController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Artist $artist)
     {
         //
     }
