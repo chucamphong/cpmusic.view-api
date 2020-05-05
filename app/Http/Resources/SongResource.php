@@ -40,12 +40,11 @@ class SongResource extends JsonResource
                 'views' => $this->views
             ]),
             $this->mergeWhen($this->category, [
-                'category' => $this->category
+                'category' => $this->category->name
             ]),
             $this->mergeWhen($this->artists, [
-                'artists' => $this->artists->each(function ($artist) {
-                    unset($artist['pivot']);
-                    return $artist;
+                'artists' => $this->artists->map(function ($artist) {
+                    return $artist->name;
                 })
             ])
         ];
