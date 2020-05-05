@@ -15,53 +15,37 @@ class ArtistController extends Controller
         $this->authorizeResource(Artist::class);
     }
 
-    public function index(): ArtistResource
+    /**
+     * Lấy tất cả nghệ sĩ có trong bảng và trả về
+     * @param Request $request
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @noinspection PhpUndefinedMethodInspection
+     */
+    public function index(Request $request)
     {
-        $artists = QueryBuilder::for(Artist::class)->get();
+        $artists = QueryBuilder::for(Artist::class)
+            ->allowedFields('name');
 
-        return ArtistResource::make($artists);
+        $artists = $request->has('page') ? $artists->jsonPaginate() : $artists->get();
+
+        return ArtistResource::collection($artists);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
     public function show(Artist $artist)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Artist $artist)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Artist $artist)
     {
         //
