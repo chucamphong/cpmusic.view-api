@@ -3,14 +3,32 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        //
+        $this->authorizeResource(Category::class);
+    }
+
+    /** @noinspection PhpUndefinedMethodInspection */
+    public function index(Request $request)
+    {
+        $categories = QueryBuilder::for(Category::class)
+            ->allowedFields('name')
+            ->allowedFilters('name');
+
+        if ($request->has('page')) {
+            $categories = $categories->jsonPaginate();
+        } else {
+            $categories = $categories->get();
+        }
+
+        return CategoryResource::collection($categories);
     }
 
     public function store(Request $request)

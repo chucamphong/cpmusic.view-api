@@ -11,4 +11,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('songs', 'SongController');
 
     Route::apiResource('artists', 'ArtistController');
+
+    Route::apiResource('categories', 'CategoryController');
 });
