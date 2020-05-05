@@ -8,6 +8,18 @@ class ArtistResource extends JsonResource
 {
     public function toArray($request): array
     {
-        return parent::toArray($request);
+        /** @var \App\Models\Artist|$this $this */
+
+        return [
+            $this->mergeWhen($this->id, [
+                'id' => $this->id,
+            ]),
+            $this->mergeWhen($this->name, [
+                'name' => $this->name,
+            ]),
+            $this->mergeWhen($this->avatar, [
+                'avatar' => asset(\Storage::url($this->avatar))
+            ])
+        ];
     }
 }
