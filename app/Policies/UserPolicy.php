@@ -9,12 +9,13 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny(User $user)
+    /** @noinspection PhpUnused */
+    public function viewAny(User $user): bool
     {
         return $user->can('view.users') && $user->tokenCan('view.users');
     }
 
-    public function view(User $currentUser, User $user)
+    public function view(User $currentUser, User $user): bool
     {
         // Kiểm tra xem thông tin chính bản thân
         if ($currentUser->is($user)) {
@@ -29,12 +30,12 @@ class UserPolicy
         return false;
     }
 
-    public function create(User $currentUser)
+    public function create(User $currentUser): bool
     {
         return $currentUser->can('create.users') && $currentUser->tokenCan('create.users');
     }
 
-    public function update(User $currentUser, User $user)
+    public function update(User $currentUser, User $user): bool
     {
         $roleOfCurrentUser = $currentUser->getRoleNames()->first();
         $roleOfUser = $user->getRoleNames()->first();
@@ -47,7 +48,7 @@ class UserPolicy
         return $currentUser->can('update.users') && $currentUser->tokenCan('update.users');
     }
 
-    public function delete(User $currentUser, User $user)
+    public function delete(User $currentUser, User $user): bool
     {
         // Không thể tự xóa tài khoản của chính mình
         if ($currentUser->is($user)) {

@@ -7,11 +7,9 @@ use Illuminate\Database\Migrations\Migration;
 class CreatePermissionTables extends Migration
 {
     /**
-     * Run the migrations.
-     *
-     * @return void
+     * @throws Exception
      */
-    public function up()
+    public function up(): void
     {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
@@ -89,11 +87,9 @@ class CreatePermissionTables extends Migration
     }
 
     /**
-     * Reverse the migrations.
-     *
-     * @return void
+     * @throws Exception
      */
-    public function down()
+    public function down(): void
     {
         $tableNames = config('permission.table_names');
 

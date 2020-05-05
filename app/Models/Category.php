@@ -11,22 +11,28 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Song[] $songs
+ * @property-read \Illuminate\Database\Eloquent\Collection|Song[] $songs
  * @property-read int|null $songs_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Category extends Model
 {
-    protected $fillable = ['name'];
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'name'
+    ];
 
-    public function songs() {
+    public function songs()
+    {
         return $this->belongsToMany(Song::class);
     }
 }

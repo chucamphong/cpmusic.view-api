@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class HistoriesTableSeeder extends Seeder
 {
-    private function randomData()
+    private function randomData(): array
     {
         $user = User::inRandomOrder()->first();
         $song = Song::inRandomOrder()->first();

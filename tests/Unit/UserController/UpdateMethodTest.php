@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\UserController;
 
-use Tests\TestCase;
 use Faker\Factory as Faker;
+use Tests\TestCase;
 
 /**
  * @group UserController

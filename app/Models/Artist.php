@@ -12,16 +12,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $avatar
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Song[] $songs
+ * @property-read \Illuminate\Database\Eloquent\Collection|Song[] $songs
  * @property-read int|null $songs_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Artist newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Artist newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Artist query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Artist whereAvatar($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Artist whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Artist whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Artist whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Artist whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Artist newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Artist newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Artist query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Artist whereAvatar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Artist whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Artist whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Artist whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Artist whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Artist extends Model
@@ -30,7 +30,8 @@ class Artist extends Model
         'name', 'avatar'
     ];
 
-    public function songs() {
+    public function songs()
+    {
         return $this->belongsToMany(Song::class);
     }
 }

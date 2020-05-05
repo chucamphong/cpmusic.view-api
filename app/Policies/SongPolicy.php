@@ -10,14 +10,13 @@ class SongPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * @noinspection PhpUnused
-     */
+    /** @noinspection PhpUnused */
     public function viewAny(User $user): bool
     {
         return $user->can('view.songs') && $user->tokenCan('view.songs');
     }
 
+    /** @noinspection PhpUnusedParameterInspection */
     public function view(User $user, Song $song): bool
     {
         return $user->can('view.songs') && $user->tokenCan('view.songs');
@@ -33,6 +32,7 @@ class SongPolicy
         //
     }
 
+    /** @noinspection PhpUnusedParameterInspection */
     public function delete(User $user, Song $song): bool
     {
         return $user->can('delete.songs') && $user->tokenCan('delete.songs');

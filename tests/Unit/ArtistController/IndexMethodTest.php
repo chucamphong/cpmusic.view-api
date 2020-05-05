@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\ArtistController;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**

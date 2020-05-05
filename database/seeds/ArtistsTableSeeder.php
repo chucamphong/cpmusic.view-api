@@ -5,12 +5,7 @@ use Illuminate\Database\Seeder;
 
 class ArtistsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         factory(Artist::class, 20)->create();
 

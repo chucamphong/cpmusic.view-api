@@ -23,6 +23,11 @@ abstract class TestCase extends BaseTestCase
         $this->seed(\RolesAndPermissionsSeeder::class);
     }
 
+    /**
+     * Lấy những quyền hạn từ chức vụ của tài khoản
+     * @param User $user Tài khoản
+     * @return array Danh sách quyền hạn của tài khoản
+     */
     protected function getAbilities(User $user): array
     {
         return $user->getPermissionsViaRoles()
@@ -31,6 +36,13 @@ abstract class TestCase extends BaseTestCase
                 })->all() ?? [];
     }
 
+    /**
+     * Thực hiện đăng nhập với $user
+     * Nếu muốn thay đổi quyền của $user đó thì có thể thêm vào ở tham số thứ 2
+     * @param User $user Tài khoản
+     * @param array $abilities Quyền hạn
+     * @return \Illuminate\Contracts\Auth\Authenticatable|\Laravel\Sanctum\HasApiTokens
+     */
     protected function login(User $user, $abilities = [])
     {
         $abilities = empty($abilities) ? $this->getAbilities($user) : $abilities;
@@ -38,6 +50,13 @@ abstract class TestCase extends BaseTestCase
         return Sanctum::actingAs($user, $abilities);
     }
 
+    /**
+     * Tạo tài khoản, mặc định sẽ là tài khoản có chức vụ Member
+     * Nếu muốn thay đổi quyền có thể thêm vào ở tham số thứ 2
+     * @param string $role Chức vụ
+     * @param array $permissions Quyền hạn
+     * @return User Tài khoản
+     */
     protected function createUser($role = 'member', $permissions = []): User
     {
         $user = factory(User::class);
@@ -47,19 +66,35 @@ abstract class TestCase extends BaseTestCase
             $user->create()->givePermissionTo($permissions);
     }
 
+    /**
+     * Tạo thể loại
+     * @param string $name Tên thể loại
+     * @return Category Thể loại
+     */
     protected function createCategory(string $name = ""): Category
     {
         $category = factory(Category::class);
         return empty($name) ? $category->create() : $category->create(['name' => $name]);
     }
 
+    /**
+     * Tạo ca sĩ
+     * @param array $attributes Thông số cần tùy chỉnh của ca sĩ
+     * @return Artist Ca sĩ
+     */
     protected function createArtist(array $attributes = []): Artist
     {
         $artist = factory(Artist::class);
         return empty($attributes) ? $artist->create() : $artist->create($attributes);
     }
 
-    protected function createSong(array $attributes = [], ...$artists)
+    /**
+     * Tạo bài hát
+     * @param array $attributes Thông số cần tùy chỉnh của bài hát
+     * @param array $artists Danh sách ca sĩ
+     * @return Song|Song[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed
+     */
+    protected function createSong(array $attributes = [], array ...$artists)
     {
         if (isset($attributes['category'])) {
             $category = $this->createCategory($attributes['category']);

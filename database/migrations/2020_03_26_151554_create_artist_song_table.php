@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateArtistSongTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('artist_song', function (Blueprint $table) {
             $table->unsignedBigInteger('artist_id');
@@ -21,12 +16,7 @@ class CreateArtistSongTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('artist_song');
     }

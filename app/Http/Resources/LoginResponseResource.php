@@ -3,18 +3,16 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Laravel\Airlock\NewAccessToken;
 
 class LoginResponseResource extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
-        /** @var NewAccessToken $this */
+        /** @var \Laravel\Sanctum\NewAccessToken|$this $this */
 
         return [
             'plainTextToken' => $this->plainTextToken,
-//            'abilities' => $this->accessToken['abilities'],
-            'expires' => config('airlock.expiration')
+            'expires' => config('sanctum.expiration')
         ];
     }
 }

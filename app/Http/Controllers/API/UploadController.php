@@ -23,7 +23,14 @@ class UploadController extends Controller
         return $this->save('avatars/' . $path, $file);
     }
 
-    public function userAvatar(AvatarRequest $request) {
+    /**
+     * Lưu hình đại diện của tài khoản
+     * @param AvatarRequest $request
+     * @return UploadResource
+     * @noinspection PhpUnused
+     */
+    public function userAvatar(AvatarRequest $request): UploadResource
+    {
         return $this->avatar($request, 'users');
     }
 }
