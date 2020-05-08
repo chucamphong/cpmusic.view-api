@@ -23,7 +23,7 @@ class UploadArtistTest extends TestCase
     public function bao_loi_khi_chua_dang_nhap()
     {
         $response = $this->postJson(route('upload'), [
-            'file' => $this->createImage(),
+            'file' => $this->fakeImage(),
             'type' => 'artist'
         ]);
 
@@ -38,7 +38,7 @@ class UploadArtistTest extends TestCase
     {
         $user = $this->createUser();
         $this->login($user);
-        $file = $this->createImage();
+        $file = $this->fakeImage();
 
         $response = $this->postJson(route('upload'), [
             'file' => $file,
@@ -62,7 +62,7 @@ class UploadArtistTest extends TestCase
         $this->login($user);
 
         $response = $this->postJson(route('upload'), [
-            'file' => $this->createImage(),
+            'file' => $this->fakeImage(),
             'type' => 'aaa'
         ]);
 
@@ -79,7 +79,7 @@ class UploadArtistTest extends TestCase
         $this->login($user);
 
         $response = $this->postJson(route('upload'), [
-            'file' => $this->createImage("default", "gif"),
+            'file' => $this->fakeImage('default', 'gif'),
             'type' => 'user'
         ]);
 

@@ -140,9 +140,14 @@ abstract class TestCase extends BaseTestCase
      * @param int $height
      * @return \Illuminate\Http\Testing\File
      */
-    protected function createImage(string $name = "default", string $extension = "jpg", int $width = 10, int $height = 10)
+    protected function fakeImage(string $name = 'default', string $extension = 'jpg', int $width = 10, int $height = 10)
     {
         $fileName = "$name.$extension";
         return UploadedFile::fake()->image($fileName, $width, $height);
+    }
+
+    protected function fakeSong(string $name = 'default.mp3', $kilobytes = 0, string $mimeType = 'audio/mp3')
+    {
+        return UploadedFile::fake()->create($name, $kilobytes, $mimeType);
     }
 }

@@ -3,12 +3,13 @@
 namespace Tests\Unit\UploadController;
 
 use Illuminate\Http\Response;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 /**
  * @group UploadController
  */
-class UploadAvatarTest extends TestCase
+class UploadSongTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -23,8 +24,8 @@ class UploadAvatarTest extends TestCase
     public function bao_loi_khi_chua_dang_nhap()
     {
         $response = $this->postJson(route('upload'), [
-            'file' => $this->fakeImage(),
-            'type' => 'user'
+            'file' => UploadedFile::fake()->create('song.mp3', 200),
+            'type' => 'song'
         ]);
 
         $response->assertUnauthorized();
@@ -32,20 +33,20 @@ class UploadAvatarTest extends TestCase
 
     /**
      * @test
-     * @testdox Tải ảnh đại diện lên server
+     * @testdox Tải bài hát lên server
      */
-    public function tai_len_anh_dai_dien()
+    public function tai_len_bai_hat()
     {
         $user = $this->createUser();
         $this->login($user);
-        $file = $this->fakeImage();
+        $file = UploadedFile::fake()->create('song.mp3', 3000, 'audio/mp3');
 
         $response = $this->postJson(route('upload'), [
             'file' => $file,
-            'type' => 'user'
+            'type' => 'song'
         ]);
 
-        \Storage::disk()->assertExists("avatars/users/{$file->hashName()}");
+        \Storage::disk()->assertExists("songs/{$file->hashName()}");
 
         $response->assertOk()->assertJsonStructure([
             'data' => ['base', 'path']
@@ -54,15 +55,15 @@ class UploadAvatarTest extends TestCase
 
     /**
      * @test
-     * @testdox Tải ảnh đại diện lên server nhưng để type sai
+     * @testdox Tải bải hát lên server nhưng để type sai
      */
-    public function tai_len_anh_dai_dien_sai_type()
+    public function tai_len_bai_hat_sai_type()
     {
         $user = $this->createUser();
         $this->login($user);
 
         $response = $this->postJson(route('upload'), [
-            'file' => $this->fakeImage(),
+            'file' => $this->fakeSong(),
             'type' => 'aaa'
         ]);
 
@@ -71,7 +72,7 @@ class UploadAvatarTest extends TestCase
 
     /**
      * @test
-     * @testdox Tải ảnh đại diện lên server nhưng sai phần mở rộng
+     * @testdox Tải bài hát lên server nhưng sai phần mở rộng
      */
     public function tai_len_anh_dai_dien_sai_phan_mo_rong()
     {
@@ -79,8 +80,8 @@ class UploadAvatarTest extends TestCase
         $this->login($user);
 
         $response = $this->postJson(route('upload'), [
-            'file' => $this->fakeImage("default", "gif"),
-            'type' => 'user'
+            'file' => $this->fakeSong('default.mpeg', 3000, 'audio/mpeg'),
+            'type' => 'song'
         ]);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
