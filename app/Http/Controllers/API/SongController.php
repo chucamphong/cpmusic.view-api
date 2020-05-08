@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Song\UpdateRequest;
 use App\Http\Resources\SongResource;
 use App\Models\Song;
 use Illuminate\Http\Request;
@@ -52,8 +53,16 @@ class SongController extends Controller
         return SongResource::make($song);
     }
 
-    public function update(Request $request, Song $song)
+    public function update(UpdateRequest $request, Song $song)
     {
+        if ($request->has('category')) {
+            $song->setCategory($request->get('category'));
+        }
+
+        if ($request->has('artists')) {
+            $song->setArtist($request->get('artists'));
+        }
+
         if ($song->update($request->all())) {
             return response()->json([
                 'data' => [
