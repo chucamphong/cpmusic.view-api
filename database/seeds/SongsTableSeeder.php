@@ -15,42 +15,42 @@ class SongsTableSeeder extends Seeder
         factory(Song::class)->create([
             'name' => 'Anh ơi ở lại',
             'other_name' => 'Cám Tấm',
-            'thumbnail' => 'thumbnails/AnhOiOLai.jpg',
+            'thumbnail' => 'songs/thumbnails/AnhOiOLai.jpg',
             'url' => 'songs/AnhOiOLai.mp3',
         ])->setCategory('Nhạc trẻ')->setArtist('Chi Pu');
 
         factory(Song::class)->create([
             'name' => 'Cảm giác lúc ấy sẽ ra sao',
             'other_name' => null,
-            'thumbnail' => 'thumbnails/CamGiacLucAySeRaSao.jpg',
+            'thumbnail' => 'songs/thumbnails/CamGiacLucAySeRaSao.jpg',
             'url' => 'songs/CamGiacLucAySeRaSao.mp3',
         ])->setCategory('Nhạc trẻ')->setArtist('Lou Hoàng');
 
         factory(Song::class)->create([
             'name' => 'Kill this love',
             'other_name' => null,
-            'thumbnail' => 'thumbnails/KillThisLove.jpg',
+            'thumbnail' => 'songs/thumbnails/KillThisLove.jpg',
             'url' => 'songs/KillThisLove.mp3',
         ])->setCategory('Nhạc Hàn Quốc')->setArtist('BLACKPINK');
 
         factory(Song::class)->create([
             'name' => 'Du ddu du ddu',
             'other_name' => null,
-            'thumbnail' => 'thumbnails/DuDduDuDdu.jpg',
+            'thumbnail' => 'songs/thumbnails/DuDduDuDdu.jpg',
             'url' => 'songs/DuDduDuDdu.mp3',
         ])->setCategory('Nhạc Hàn Quốc')->setArtist('BLACKPINK');
 
         factory(Song::class)->create([
             'name' => 'Boombayah',
             'other_name' => null,
-            'thumbnail' => 'thumbnails/Boombayah.jpg',
+            'thumbnail' => 'songs/thumbnails/Boombayah.jpg',
             'url' => 'songs/Boombayah.mp3',
         ])->setCategory('Nhạc Hàn Quốc')->setArtist('BLACKPINK');
 
         factory(Song::class)->create([
             'name' => 'Em gái mưa',
             'other_name' => null,
-            'thumbnail' => 'thumbnails/EmGaiMua.jpg',
+            'thumbnail' => 'songs/thumbnails/EmGaiMua.jpg',
             'url' => 'songs/EmGaiMua.mp3',
         ])->setCategory('Nhạc Trẻ')->setArtist('Hương Tràm');
     }
