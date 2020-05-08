@@ -143,4 +143,12 @@ class Song extends Model
                 return $query->where('name', 'LIKE', "%$name%");
             });
     }
+
+    /**
+     * @noinspection PhpUnused
+     */
+    public function setThumbnailAttribute(string $url)
+    {
+        $this->attributes['thumbnail'] = \Str::of($url)->replace(\Storage::url(''), '');
+    }
 }
