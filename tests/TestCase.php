@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Http\UploadedFile;
 use Laravel\Sanctum\Sanctum;
 
 abstract class TestCase extends BaseTestCase
@@ -129,5 +130,19 @@ abstract class TestCase extends BaseTestCase
         $song->artists()->sync($artists);
 
         return $song;
+    }
+
+    /**
+     * Tạo hình ảnh
+     * @param string $name
+     * @param string $extension
+     * @param int $width
+     * @param int $height
+     * @return \Illuminate\Http\Testing\File
+     */
+    protected function createImage(string $name = "default", string $extension = "jpg", int $width = 10, int $height = 10)
+    {
+        $fileName = "$name.$extension";
+        return UploadedFile::fake()->image($fileName, $width, $height);
     }
 }
