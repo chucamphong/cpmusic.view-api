@@ -151,4 +151,12 @@ class Song extends Model
     {
         $this->attributes['thumbnail'] = \Str::of($url)->replace(\Storage::url(''), '');
     }
+
+    /**
+     * @noinspection PhpUnused
+     */
+    public function setUrlAttribute(string $url)
+    {
+        $this->attributes['url'] = \Str::of($url)->replace(\Storage::url(''), '');
+    }
 }
