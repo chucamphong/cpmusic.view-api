@@ -24,7 +24,7 @@ class Request extends FormRequest
     public function rules()
     {
         return [
-            'file' => ['required', 'image', 'mimes:jpeg,jpg,png'],
+            'file' => ['required', 'file', 'mimes:jpeg,jpg,png,mp3'],
             'type' => ['required', 'string', 'in:user,artist,thumbnail,song']
         ];
     }
