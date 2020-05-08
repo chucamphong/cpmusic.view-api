@@ -3,7 +3,6 @@
 namespace Tests\Unit\UploadController;
 
 use Illuminate\Http\Response;
-use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 /**
@@ -24,7 +23,7 @@ class UploadSongTest extends TestCase
     public function bao_loi_khi_chua_dang_nhap()
     {
         $response = $this->postJson(route('upload'), [
-            'file' => UploadedFile::fake()->create('song.mp3', 200),
+            'file' => $this->fakeSong(),
             'type' => 'song'
         ]);
 
@@ -39,7 +38,7 @@ class UploadSongTest extends TestCase
     {
         $user = $this->createUser();
         $this->login($user);
-        $file = UploadedFile::fake()->create('song.mp3', 3000, 'audio/mp3');
+        $file = $this->fakeSong();
 
         $response = $this->postJson(route('upload'), [
             'file' => $file,
@@ -80,7 +79,7 @@ class UploadSongTest extends TestCase
         $this->login($user);
 
         $response = $this->postJson(route('upload'), [
-            'file' => $this->fakeSong('default.mpeg', 3000, 'audio/mpeg'),
+            'file' => $this->fakeSong('default.mpeg', 3000, 'audio/mp3'),
             'type' => 'song'
         ]);
 

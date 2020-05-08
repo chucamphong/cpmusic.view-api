@@ -146,7 +146,7 @@ abstract class TestCase extends BaseTestCase
         return UploadedFile::fake()->image($fileName, $width, $height);
     }
 
-    protected function fakeSong(string $name = 'default.mp3', $kilobytes = 0, string $mimeType = 'audio/mp3')
+    protected function fakeSong(string $name = 'default.mp3', $kilobytes = 0, string $mimeType = 'audio/mpeg')
     {
         return UploadedFile::fake()->create($name, $kilobytes, $mimeType);
     }

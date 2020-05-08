@@ -90,7 +90,7 @@ class UploadController extends Controller
      * @param UploadedFile|UploadedFile[] $file
      * @return UploadResource
      */
-    private function save(string $path, $file)
+    private function save(string $path, $file): UploadResource
     {
         $path = $file->store($path);
 
@@ -106,7 +106,7 @@ class UploadController extends Controller
      */
     private function isImage($file): bool
     {
-        $extensions = ['jpeg', 'jpg', 'png'];
+        $extensions = ['jpeg', 'jpg', 'jpe', 'png'];
         return in_array($file->extension(), $extensions);
     }
 
@@ -117,7 +117,7 @@ class UploadController extends Controller
      */
     private function isSong($file): bool
     {
-        $extensions = ['mp3'];
+        $extensions = ['mpga', 'mp2', 'mp2a', 'mp3', 'm2a', 'm3a'];
         return in_array($file->extension(), $extensions);
     }
 }
