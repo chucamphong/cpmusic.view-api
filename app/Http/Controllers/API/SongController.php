@@ -54,7 +54,19 @@ class SongController extends Controller
 
     public function update(Request $request, Song $song)
     {
-        //
+        if ($song->update($request->all())) {
+            return response()->json([
+                'data' => [
+                    'message' => "Cập nhật thành công bài hát $song->name"
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'data' => [
+                'message' => "Cập nhật bài hát $song->name thất bại"
+            ]
+        ]);
     }
 
     /**
