@@ -4,7 +4,7 @@ namespace App\Http\Requests\Upload;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AvatarRequest extends FormRequest
+class Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class AvatarRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => ['required', 'file']
+            'file' => ['required', 'file'],
+            'type' => ['required', 'string', 'in:user,artist,thumbnail,song']
         ];
     }
 }
