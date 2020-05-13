@@ -30,7 +30,7 @@ class SongResource extends JsonResource
             $this->mergeWhen($this->year, [
                 'year' => $this->year
             ]),
-            $this->mergeWhen($this->views, [
+            $this->mergeWhen(isset($this->views), [
                 'views' => $this->views
             ]),
             $this->mergeWhen($this->category, [
