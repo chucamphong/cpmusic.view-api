@@ -7,7 +7,9 @@ class ArtistsTableSeeder extends Seeder
 {
     public function run(): void
     {
-        factory(Artist::class, 20)->create();
+        factory(Artist::class, 20)->create([
+            'avatar'    => 'avatars/artists/HuongTram.jpg'
+        ]);
 
         factory(Artist::class)->create([
             'name'      => 'Chi Pu',
