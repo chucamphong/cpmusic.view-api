@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ArtistResource;
 use App\Models\Artist;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ArtistController extends Controller
@@ -51,6 +52,15 @@ class ArtistController extends Controller
 
     public function destroy(Artist $artist)
     {
-        //
+        try {
+            $artist->delete();
+            return response()->json([
+                'message' => "Xóa thành công nghệ sĩ $artist->name"
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => "Xóa thất bại nghệ sĩ $artist->name"
+            ], Response::HTTP_EXPECTATION_FAILED);
+        }
     }
 }

@@ -33,7 +33,7 @@ class ArtistPolicy
 
     public function delete(User $user, Artist $artist)
     {
-        //
+        return $user->can('delete.artists') && $user->tokenCan('delete.artists');
     }
 
     public function restore(User $user, Artist $artist)

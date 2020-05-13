@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Artist;
+use App\Observers\ArtistObserver;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 //        JsonResource::withoutWrapping();
+        Artist::observe(ArtistObserver::class);
     }
 }
