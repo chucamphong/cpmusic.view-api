@@ -24,7 +24,14 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'string', 'min:4', 'max:255'],
+            'other_name' => ['string', 'min:4', 'max:255'],
+            'thumbnail' => ['required', 'url', 'unique:songs,thumbnail'],
+            'url' => ['required', 'url', 'unique:songs,url'],
+            'year' => ['required', 'numeric'],
+            'views' => ['numeric'],
+            'category' => ['required', 'string', 'exists:categories,name'],
+            'artists' => ['required', 'array', 'min:1', 'max:4', 'exists:artists,name'],
         ];
     }
 }

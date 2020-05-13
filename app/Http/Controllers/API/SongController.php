@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Song\StoreRequest;
 use App\Http\Requests\Song\UpdateRequest;
 use App\Http\Resources\SongResource;
+use App\Models\Category;
 use App\Models\Song;
 use Illuminate\Http\Response;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -41,7 +42,25 @@ class SongController extends Controller
 
     public function store(StoreRequest $request)
     {
-        //
+        try {
+            $song = Song::make($request->all());
+            $category = Category::whereName($request->get('category'))->first();
+            $song->category()->associate($category);
+            $song->saveOrFail();
+            $song->setArtist($request->get('artists'));
+
+            return response()->json([
+                'data' => [
+                    'message' => "Tạo thành công bài hát $song->name"
+                ]
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'data' => [
+                    'message' => "Tạo bài hát {$request->get('name')} thất bại"
+                ]
+            ]);
+        }
     }
 
     /**
