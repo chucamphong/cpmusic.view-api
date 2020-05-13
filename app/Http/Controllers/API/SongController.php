@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Song\StoreRequest;
 use App\Http\Requests\Song\UpdateRequest;
 use App\Http\Resources\SongResource;
 use App\Models\Song;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -39,7 +39,7 @@ class SongController extends Controller
         return SongResource::collection($songs);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         //
     }

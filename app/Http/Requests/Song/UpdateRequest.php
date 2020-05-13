@@ -24,8 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['string', 'min:8', 'max:255'],
-            'other_name' => ['string', 'min:8', 'max:255'],
+            'name' => ['string', 'min:4', 'max:255'],
+            'other_name' => ['string', 'min:4', 'max:255'],
             'thumbnail' => ['url', 'unique:songs,thumbnail'],
             'url' => ['url', 'unique:songs,url'],
             'year' => ['numeric'],
