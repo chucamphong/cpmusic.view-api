@@ -24,7 +24,10 @@ class ArtistController extends Controller
     public function index(Request $request)
     {
         $artists = QueryBuilder::for(Artist::class)
-            ->allowedFields('name');
+            ->allowedFields('name')
+            ->allowedFilters('name')
+            ->allowedIncludes('songsCount')
+            ->allowedSorts('id');
 
         $artists = $request->has('page') ? $artists->jsonPaginate() : $artists->get();
 
