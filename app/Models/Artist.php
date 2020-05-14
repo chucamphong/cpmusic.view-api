@@ -34,4 +34,12 @@ class Artist extends Model
     {
         return $this->belongsToMany(Song::class);
     }
+
+    /**
+     * @noinspection PhpUnused
+     */
+    public function setAvatarAttribute(string $url)
+    {
+        $this->attributes['avatar'] = \Str::of($url)->replace(\Storage::url(''), '');
+    }
 }
