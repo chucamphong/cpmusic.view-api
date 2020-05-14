@@ -4,7 +4,7 @@ namespace App\Http\Requests\Artist;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,8 +14,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string', 'min:2', 'max:255'],
-            'avatar' => ['url', 'max:255']
+            'name' => ['required', 'string', 'min:2', 'max:255'],
+            'avatar' => ['required', 'url', 'max:255']
         ];
     }
 }

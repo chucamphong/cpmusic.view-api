@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Artist\StoreRequest;
 use App\Http\Requests\Artist\UpdateRequest;
 use App\Http\Resources\ArtistResource;
 use App\Models\Artist;
@@ -36,9 +37,23 @@ class ArtistController extends Controller
         return ArtistResource::collection($artists);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $artist = Artist::create($request->all());
+
+        if ($artist->exists) {
+            return response()->json([
+                'data' => [
+                    'message' => "Tạo thành công nghệ sĩ $artist->name"
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'data' => [
+                'message' => "Tạo nghệ sĩ {$request->get('name')} thất bại"
+            ]
+        ]);
     }
 
     public function show(Artist $artist)

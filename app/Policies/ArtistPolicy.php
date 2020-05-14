@@ -16,34 +16,26 @@ class ArtistPolicy
         return $user->can('view.artists') && $user->tokenCan('view.artists');
     }
 
-    public function view(User $user, Artist $artist)
+    /** @noinspection PhpUnusedParameterInspection */
+    public function view(User $user, Artist $artist): bool
     {
         return $user->can('view.artists') && $user->tokenCan('view.artists');
     }
 
-    public function create(User $user)
+    public function create(User $user): bool
     {
-        //
+        return $user->can('create.artists') && $user->tokenCan('create.artists');
     }
 
-    public function update(User $user, Artist $artist)
+    /** @noinspection PhpUnusedParameterInspection */
+    public function update(User $user, Artist $artist): bool
     {
         return $user->can('update.artists') && $user->tokenCan('update.artists');
     }
 
-    public function delete(User $user, Artist $artist)
+    /** @noinspection PhpUnusedParameterInspection */
+    public function delete(User $user, Artist $artist): bool
     {
         return $user->can('delete.artists') && $user->tokenCan('delete.artists');
-    }
-
-    public function restore(User $user, Artist $artist)
-    {
-        //
-    }
-
-    /** @noinspection PhpUnused */
-    public function forceDelete(User $user, Artist $artist)
-    {
-        //
     }
 }
