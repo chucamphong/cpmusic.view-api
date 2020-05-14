@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Artist\UpdateRequest;
 use App\Http\Resources\ArtistResource;
 use App\Models\Artist;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class ArtistController extends Controller
         return ArtistResource::make($artist);
     }
 
-    public function update(Request $request, Artist $artist)
+    public function update(UpdateRequest $request, Artist $artist)
     {
         if ($artist->update($request->all())) {
             return response()->json([
