@@ -11,7 +11,6 @@ use App\Policies\CategoryPolicy;
 use App\Policies\SongPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,7 +20,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Models' => 'App\Policies\ModelPolicy',
         User::class => UserPolicy::class,
         Song::class => SongPolicy::class,
         Artist::class => ArtistPolicy::class,
@@ -32,16 +30,15 @@ class AuthServiceProvider extends ServiceProvider
      * Register any authentication / authorization services.
      *
      * @return void
-     * @noinspection PhpInconsistentReturnPointsInspection
      */
     public function boot()
     {
         $this->registerPolicies();
 
-        Gate::before(function (User $user, $ability) {
-            if ($user->hasRole('admin') && $ability !== 'delete') {
-                return true;
-            }
-        });
+//        Gate::before(function (User $user, $ability) {
+//            if ($user->hasRole('admin') && $ability !== 'delete') {
+//                return true;
+//            }
+//        });
     }
 }
