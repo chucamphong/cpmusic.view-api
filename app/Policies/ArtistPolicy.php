@@ -28,7 +28,7 @@ class ArtistPolicy
 
     public function update(User $user, Artist $artist)
     {
-        //
+        return $user->can('update.artists') && $user->tokenCan('update.artists');
     }
 
     public function delete(User $user, Artist $artist)

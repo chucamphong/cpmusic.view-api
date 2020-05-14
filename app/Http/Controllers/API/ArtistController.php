@@ -47,7 +47,19 @@ class ArtistController extends Controller
 
     public function update(Request $request, Artist $artist)
     {
-        //
+        if ($artist->update($request->all())) {
+            return response()->json([
+                'data' => [
+                    'message' => "Cập nhật thành công nghệ sĩ $artist->name"
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'data' => [
+                'message' => "Cập nhật nghệ sĩ $artist->name thất bại"
+            ]
+        ]);
     }
 
     public function destroy(Artist $artist)
