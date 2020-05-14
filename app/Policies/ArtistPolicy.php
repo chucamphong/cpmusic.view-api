@@ -18,7 +18,7 @@ class ArtistPolicy
 
     public function view(User $user, Artist $artist)
     {
-        //
+        return $user->can('view.artists') && $user->tokenCan('view.artists');
     }
 
     public function create(User $user)

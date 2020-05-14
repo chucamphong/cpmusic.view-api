@@ -42,7 +42,7 @@ class ArtistController extends Controller
 
     public function show(Artist $artist)
     {
-        //
+        return ArtistResource::make($artist);
     }
 
     public function update(Request $request, Artist $artist)
