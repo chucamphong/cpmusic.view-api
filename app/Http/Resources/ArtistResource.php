@@ -20,7 +20,7 @@ class ArtistResource extends JsonResource
             $this->mergeWhen($this->avatar, [
                 'avatar' => asset(\Storage::url($this->avatar))
             ]),
-            $this->mergeWhen($this->songs_count, [
+            $this->mergeWhen(is_numeric($this->songs_count), [
                 'songs_count' => $this->songs_count
             ])
         ];
