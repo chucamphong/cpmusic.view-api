@@ -22,29 +22,20 @@ class SongPolicy
         return $user->can('view.songs') && $user->tokenCan('view.songs');
     }
 
-    public function create(User $user)
+    public function create(User $user): bool
     {
-        //
+        return $user->can('create.songs') && $user->tokenCan('create.songs');
     }
 
-    public function update(User $user, Song $song)
+    /** @noinspection PhpUnusedParameterInspection */
+    public function update(User $user, Song $song): bool
     {
-        //
+        return $user->can('update.songs') && $user->tokenCan('update.songs');
     }
 
     /** @noinspection PhpUnusedParameterInspection */
     public function delete(User $user, Song $song): bool
     {
         return $user->can('delete.songs') && $user->tokenCan('delete.songs');
-    }
-
-    public function restore(User $user, Song $song)
-    {
-        //
-    }
-
-    public function forceDelete(User $user, Song $song)
-    {
-        //
     }
 }
