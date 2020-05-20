@@ -35,9 +35,13 @@ class CategoryPolicy
         return true;
     }
 
-    public function create(User $user)
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function create(User $user): bool
     {
-        //
+        return $user->can('create.categories') && $user->tokenCan('create.categories');
     }
 
     public function update(User $user, Category $category)

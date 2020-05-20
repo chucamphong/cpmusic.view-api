@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\StoreRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -35,9 +36,23 @@ class CategoryController extends Controller
         return CategoryResource::collection($categories);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $category = Category::create($request->all());
+
+        if ($category->exists) {
+            return response()->json([
+                'data' => [
+                    'message' => "Tạo thành công thể loại $category->name"
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'data' => [
+                'message' => "Tạo thể loại {$request->get('name')} thất bại"
+            ]
+        ]);
     }
 
 
