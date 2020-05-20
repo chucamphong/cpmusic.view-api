@@ -24,7 +24,7 @@ class CategoryController extends Controller
             ->allowedFields('name')
             ->allowedFilters('name')
             ->allowedIncludes('songsCount')
-            ->allowedSorts('id');;
+            ->allowedSorts('id');
 
         if ($request->has('page')) {
             $categories = $categories->jsonPaginate();
