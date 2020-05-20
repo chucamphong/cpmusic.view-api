@@ -10,16 +10,26 @@ class SongPolicy
 {
     use HandlesAuthorization;
 
-    /** @noinspection PhpUnused */
-    public function viewAny(User $user): bool
+    /**
+     * @param User|null $user
+     * @return bool
+     * @noinspection PhpUnused
+     * @noinspection PhpUnusedParameterInspection
+     */
+    public function viewAny(?User $user): bool
     {
-        return $user->can('view.songs') && $user->tokenCan('view.songs');
+        return true;
     }
 
-    /** @noinspection PhpUnusedParameterInspection */
-    public function view(User $user, Song $song): bool
+    /**
+     * @param User|null $user
+     * @param Song $song
+     * @return bool
+     * @noinspection PhpUnusedParameterInspection
+     */
+    public function view(?User $user, Song $song): bool
     {
-        return $user->can('view.songs') && $user->tokenCan('view.songs');
+        return true;
     }
 
     public function create(User $user): bool

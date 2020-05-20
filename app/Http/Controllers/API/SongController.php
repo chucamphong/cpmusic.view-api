@@ -16,6 +16,7 @@ class SongController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth:sanctum')->except('index', 'show');
         $this->authorizeResource(Song::class);
     }
 
