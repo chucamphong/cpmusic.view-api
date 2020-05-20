@@ -21,7 +21,8 @@ class CategoryController extends Controller
     {
         $categories = QueryBuilder::for(Category::class)
             ->allowedFields('name')
-            ->allowedFilters('name');
+            ->allowedFilters('name')
+            ->allowedIncludes('songsCount');
 
         if ($request->has('page')) {
             $categories = $categories->jsonPaginate();
