@@ -10,16 +10,23 @@ class ArtistPolicy
 {
     use HandlesAuthorization;
 
-    /** @noinspection PhpUnused */
-    public function viewAny(User $user): bool
+    /**
+     * @param User|null $user
+     * @return bool
+     * @noinspection PhpUnused
+     * @noinspection PhpUnusedParameterInspection
+     */
+    public function viewAny(?User $user): bool
     {
-        return $user->can('view.artists') && $user->tokenCan('view.artists');
+        return true;
     }
 
-    /** @noinspection PhpUnusedParameterInspection */
-    public function view(User $user, Artist $artist): bool
+    /**
+     * @noinspection PhpUnusedParameterInspection
+     */
+    public function view(?User $user, Artist $artist): bool
     {
-        return $user->can('view.artists') && $user->tokenCan('view.artists');
+        return true;
     }
 
     public function create(User $user): bool

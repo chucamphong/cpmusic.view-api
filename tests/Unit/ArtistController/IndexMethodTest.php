@@ -11,72 +11,38 @@ class IndexMethodTest extends TestCase
 {
     /**
      * @test
-     * @testdox Báo lỗi nếu truy cập api khi chưa đăng nhập
+     * @testdox Lấy danh sách nghệ sĩ
      */
-    public function bao_loi_neu_truy_cap_api_khi_chua_dang_nhap()
+    public function lay_danh_sach_nghe_si()
     {
-        $response = $this->getJson(route('artists.index'));
-
-        $response->assertUnauthorized();
-    }
-
-    /**
-     * @test
-     * @testdox Báo lỗi nếu tài khoản không có permission view.artists cho dù đó là tài khoản mang chức vụ Admin
-     */
-    public function bao_loi_api_khi_truy_cap_khong_co_quyen()
-    {
-        $user = $this->createUser('admin', ['view.users']);
-        $this->login($user, ['view.users']);
-        $response = $this->getJson(route('artists.index'));
-        $response->assertForbidden();
-    }
-
-    /**
-     * @test
-     * @testdox Lấy danh sách nghệ sĩ với tài khoản Admin
-     */
-    public function lay_danh_sach_nghe_si_voi_tai_khoan_admin()
-    {
-        $user = $this->createUser('admin');
-        $this->login($user);
         $response = $this->getJson(route('artists.index'));
         $response->assertOk();
     }
 
     /**
      * @test
-     * @testdox Lấy danh sách nghệ sĩ với tài khoản Mod
+     * @testdox Lấy danh sách nghệ sĩ có phân trang
      */
-    public function lay_danh_sach_nghe_si_voi_tai_khoan_mod()
+    public function lay_danh_sach_nghe_si_co_phan_trang()
     {
-        $user = $this->createUser('mod');
-        $this->login($user);
-        $response = $this->getJson(route('artists.index'));
-        $response->assertOk();
+        $response = $this->getJson(route('artists.index', 'page[number]=1'));
+        $response->assertJsonStructure([
+            'data',
+            'links',
+            'meta'
+        ]);
     }
 
     /**
      * @test
-     * @testdox Lấy danh sách nghệ sĩ với tài khoản Member
+     * @testdox Tìm kiếm nghệ sĩ
      */
-    public function lay_danh_sach_nghe_si_voi_tai_khoan_member()
+    public function tim_kiem_nghe_si()
     {
-        $user = $this->createUser('member');
-        $this->login($user);
-        $response = $this->getJson(route('artists.index'));
-        $response->assertOk();
-    }
-
-    /**
-     * @test
-     * @testdox Lấy danh sách nghệ sĩ với tài khoản có permission được gán thẳng không thông qua role
-     */
-    public function lay_danh_sach_nghe_si_gan_bang_permission()
-    {
-        $user = $this->createUser('member', ['view.artists']);
-        $this->login($user, ['view.artists']);
-        $response = $this->getJson(route('artists.index'));
-        $response->assertOk();
+        $artist = $this->createArtist();
+        $response = $this->getJson(route('artists.index', "filter[name]=$artist->name"));
+        $response->assertJsonFragment([
+            'name' => $artist->name
+        ]);
     }
 }
