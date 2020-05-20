@@ -44,9 +44,15 @@ class CategoryPolicy
         return $user->can('create.categories') && $user->tokenCan('create.categories');
     }
 
-    public function update(User $user, Category $category)
+    /**
+     * @param User $user
+     * @param Category $category
+     * @return bool
+     * @noinspection PhpUnusedParameterInspection
+     */
+    public function update(User $user, Category $category): bool
     {
-        //
+        return $user->can('update.categories') && $user->tokenCan('update.categories');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -61,9 +62,21 @@ class CategoryController extends Controller
         return CategoryResource::make($category);
     }
 
-    public function update(Request $request, Category $category)
+    public function update(UpdateRequest $request, Category $category)
     {
-        //
+        if ($category->update($request->all())) {
+            return response()->json([
+                'data' => [
+                    'message' => "Cập nhật thành công thể loại $category->name"
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'data' => [
+                'message' => "Cập nhật thể loại $category->name thất bại"
+            ]
+        ]);
     }
 
     public function destroy(Category $category)
