@@ -40,6 +40,7 @@ class IndexMethodTest extends TestCase
     public function tim_kiem_nghe_si()
     {
         $artist = $this->createArtist();
+        $artist->save();
         $response = $this->getJson(route('artists.index', "filter[name]=$artist->name"));
         $response->assertJsonFragment([
             'name' => $artist->name
