@@ -45,18 +45,14 @@ class CategoryPolicy
         //
     }
 
+    /**
+     * @param User $user
+     * @param Category $category
+     * @return bool
+     * @noinspection PhpUnusedParameterInspection
+     */
     public function delete(User $user, Category $category)
     {
-        //
-    }
-
-    public function restore(User $user, Category $category)
-    {
-        //
-    }
-
-    public function forceDelete(User $user, Category $category)
-    {
-        //
+        return $user->can('delete.categories') && $user->tokenCan('delete.categories');
     }
 }

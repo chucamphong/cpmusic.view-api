@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoryController extends Controller
@@ -51,6 +52,15 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        //
+        try {
+            $category->delete();
+            return response()->json([
+                'message' => "Xóa thành công thể loại $category->name"
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => "Xóa thất bại thể loại $category->name"
+            ], Response::HTTP_EXPECTATION_FAILED);
+        }
     }
 }
