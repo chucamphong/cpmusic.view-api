@@ -11,7 +11,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('artists', 'ArtistController');
 
-    Route::apiResource('categories', 'CategoryController');
-
     Route::post('upload', 'UploadController@upload')->name('upload');
 });
+
+Route::apiResource('categories', 'CategoryController');
