@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $thumbnail
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereThumbnail($value)
  */
 class Category extends Model
 {
@@ -28,7 +30,7 @@ class Category extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name'
+        'name', 'thumbnail'
     ];
 
     public function songs()
