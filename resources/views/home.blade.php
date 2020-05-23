@@ -40,13 +40,15 @@
         @foreach($songs as $key => $song)
             <div class="col-6 col-sm-4 col-md-4 col-lg-2">
                 <div class="card bg-transparent shadow-none">
-                    <a href="#test">
+                    <a href="{{ route('song.listen', $song->id) }}">
                         <img src="{{ Storage::url($song->thumbnail) }}" alt="{{ $song->name }}"
                              class="card-img-top img-fluid">
                     </a>
                     <div class="card-body px-0 py-1">
-                        <h4 class="text-truncate m-0">{{$song->name}}</h4>
-                        <h5 class="text-muted">{!! $song->artists->map(function ($artist) {
+                        <a href="{{ route('song.listen', $song->id) }}">
+                            <h4 class="text-truncate text-capitalize m-0">{{$song->name}}</h4>
+                        </a>
+                        <h5 class="text-muted text-truncate">{!! $song->artists->map(function ($artist) {
                             return "<a href='/ca-si/$artist->id'>$artist->name</a>";
                         })->join(', ') !!}</h5>
                     </div>
