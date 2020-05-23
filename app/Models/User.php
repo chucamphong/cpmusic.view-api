@@ -78,6 +78,6 @@ class User extends Authenticatable
      */
     public function setPasswordAttribute(string $password)
     {
-        $this->attributes['password'] = \Hash::make($password);
+        $this->attributes['password'] = \Hash::needsRehash($password) ? \Hash::make($password) : $password;
     }
 }
