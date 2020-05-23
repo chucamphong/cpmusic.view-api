@@ -30,5 +30,30 @@ class ArtistsTableSeeder extends Seeder
             'name'      => 'Hương Tràm',
             'avatar'    => 'avatars/artists/HuongTram.jpg'
         ]);
+
+        factory(Artist::class)->create([
+            'name'      => 'Hòa Minzy',
+            'avatar'    => 'avatars/artists/HoaMinzy.jpg'
+        ]);
+
+        factory(Artist::class)->create([
+            'name'      => 'Mr Siro',
+            'avatar'    => 'avatars/artists/MrSiro.jpg'
+        ]);
+
+        factory(Artist::class)->create([
+            'name'      => 'Trúc Nhân',
+            'avatar'    => 'avatars/artists/TrucNhan.jpg'
+        ]);
+
+        factory(Artist::class)->create([
+            'name'      => 'MIN',
+            'avatar'    => 'avatars/artists/MIN.jpg'
+        ]);
+
+        factory(Artist::class)->create([
+            'name'      => 'Mr.A',
+            'avatar'    => 'avatars/artists/MrA.jpg'
+        ]);
     }
 }
