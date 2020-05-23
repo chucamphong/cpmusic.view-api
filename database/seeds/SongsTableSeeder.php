@@ -53,5 +53,33 @@ class SongsTableSeeder extends Seeder
             'thumbnail' => 'songs/thumbnails/EmGaiMua.jpg',
             'url' => 'songs/EmGaiMua.mp3',
         ])->setCategory('Nhạc Trẻ')->setArtist('Hương Tràm');
+
+        factory(Song::class)->create([
+            'name' => 'Không thể cùng nhau suốt kiếp',
+            'other_name' => null,
+            'thumbnail' => 'songs/thumbnails/KhongTheCungNhauSuotKiep.jpg',
+            'url' => 'songs/KhongTheCungNhauSuotKiep.mp3',
+        ])->setCategory('Nhạc Trẻ')->setArtist('Hòa Minzy', 'Mr Siro');
+
+        factory(Song::class)->create([
+            'name' => 'Muốn khóc thật to',
+            'other_name' => null,
+            'thumbnail' => 'songs/thumbnails/MuonKhocThatTo.jpg',
+            'url' => 'songs/MuonKhocThatTo.mp3',
+        ])->setCategory('Nhạc Trẻ')->setArtist('Trúc Nhân');
+
+        factory(Song::class)->create([
+            'name' => 'Bốn chữ lắm',
+            'other_name' => null,
+            'thumbnail' => 'songs/thumbnails/BonChuLam.jpg',
+            'url' => 'songs/BonChuLam.mp3',
+        ])->setCategory('Nhạc Trẻ')->setArtist('Trúc Nhân');
+
+        factory(Song::class)->create([
+            'name' => 'Tìm',
+            'other_name' => null,
+            'thumbnail' => 'songs/thumbnails/Tim.jpg',
+            'url' => 'songs/Tim.mp3',
+        ])->setCategory('Nhạc Trẻ')->setArtist('MIN', 'Mr.A');
     }
 }
