@@ -14,8 +14,12 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        $songs = Song::with('artists:id,name')->limit(6)->orderByDesc('created_at')->get();
+        $songQuery = Song::with('artists:id,name')->limit(6);
+        $songs = with(clone $songQuery)->orderByDesc('created_at')->get();
+        $topSongs = with(clone $songQuery)->orderByDesc('views')->get();
+
         $categories = Category::select(['id', 'name', 'thumbnail'])->limit(6)->get();
-        return view('home', compact('songs', 'categories'));
+
+        return view('home', compact('songs', 'topSongs', 'categories'));
     }
 }

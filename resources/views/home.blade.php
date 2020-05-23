@@ -6,7 +6,7 @@
     @includeWhen(auth()->guest(), 'layouts.partials.please-register')
 
     <!-- Bảng xếp hạng -->
-    <div class="row mb-3">
+    <div class="row mb-4">
         <div class="col-12 d-flex align-items-center justify-content-between mb-2">
             <h2 class="mb-0 text-uppercase">Bảng xếp hạng</h2>
             <a href="#xem-them" class="h5 mb-0">Xem thêm</a>
@@ -27,6 +27,32 @@
                      alt="">
             </a>
         </div>
+    </div>
+
+    <!-- TOP Lượt nghe -->
+    <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-between mb-2">
+            <h2 class="mb-0 text-uppercase">TOP Lượt nghe</h2>
+            <a href="#xem-them" class="h5 mb-0">Xem thêm</a>
+        </div>
+        @foreach($topSongs as $key => $song)
+            <div class="col-6 col-sm-4 col-md-4 col-lg-2">
+                <div class="card bg-transparent shadow-none">
+                    <a href="{{ route('song.listen', $song->id) }}" title="{{ $song->name }}">
+                        <img src="{{ Storage::url($song->thumbnail) }}" alt="{{ $song->name }}"
+                             class="card-img-top img-fluid">
+                    </a>
+                    <div class="card-body px-0 py-1">
+                        <a href="{{ route('song.listen', $song->id) }}" title="{{ $song->name }}">
+                            <h4 class="text-truncate text-capitalize m-0">{{$song->name}}</h4>
+                        </a>
+                        <h5 class="text-muted text-truncate">{!! $song->artists->map(function ($artist) {
+                            return "<a href='/ca-si/$artist->id'>$artist->name</a>";
+                        })->join(', ') !!}</h5>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 
     <!-- Mới phát hành -->
