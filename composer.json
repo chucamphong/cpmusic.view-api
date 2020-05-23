@@ -18,9 +18,11 @@
         "laravel/ui": "^2.0",
         "spatie/laravel-json-api-paginate": "^1.7",
         "spatie/laravel-permission": "^3.11",
-        "spatie/laravel-query-builder": "^2.8"
+        "spatie/laravel-query-builder": "^2.8",
+        "ext-intl": "*"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.3",
         "barryvdh/laravel-ide-helper": "^2.6",
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
