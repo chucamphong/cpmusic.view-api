@@ -24,7 +24,7 @@
                 @guest
                     <li class="nav-item">
                         <a class="nav-link pr-0" href="{{ route('register') }}">
-                           Đăng ký
+                            Đăng ký
                         </a>
                     </li>
                     <li class="nav-item">
@@ -38,19 +38,22 @@
                            aria-expanded="false">
                             <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder"
-                                     src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                                @if (Auth::getUser()->avatar)
+                                    <img src="{{ Auth::getUser()->avatar }}" alt="{{ Auth::getUser()->name }}" />
+                                @else
+                                    <i class="ni ni-single-02"></i>
+                                @endif
                             </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
-                                    <span class="mb-0 text-sm font-weight-bold">John Snow</span>
+                                    <span class="mb-0 text-sm font-weight-bold">{{ Auth::getUser()->name }}</span>
                                 </div>
                             </div>
                         </a>
-                        <div class="dropdown-menu  dropdown-menu-right ">
+                        <div class="dropdown-menu dropdown-menu-right ">
                             <div class="dropdown-header noti-title">
                                 <h6 class="text-overflow m-0">Xin chào!</h6>
                             </div>
-                            <a href="#!" class="dropdown-item">
+                            <a id="logoutBtn" href="{{ route('logout') }}" class="dropdown-item">
                                 <i class="ni ni-user-run"></i>
                                 <span>Đăng xuất</span>
                             </a>
@@ -61,3 +64,24 @@
         </div>
     </div>
 </nav>
+
+@auth
+    <form id="logoutFrm" method="post" action="{{ route('logout') }}" class="d-none">
+        @csrf
+    </form>
+
+    @push('scripts')
+        <script>
+            (() => {
+                const logoutBtn = document.getElementById('logoutBtn');
+                const logoutFrm = document.getElementById('logoutFrm');
+
+                logoutBtn.onclick = (event) => {
+                    event.preventDefault();
+
+                    logoutFrm.submit();
+                };
+            })();
+        </script>
+    @endpush
+@endauth
