@@ -3,6 +3,8 @@
 @section('title', 'Trang chủ')
 
 @section('content')
+    @includeWhen(auth()->guest(), 'layouts.partials.please-register')
+
     <!-- Bảng xếp hạng -->
     <div class="row mb-3">
         <div class="col-12 d-flex align-items-center justify-content-between mb-2">

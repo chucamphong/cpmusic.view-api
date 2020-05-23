@@ -30,8 +30,6 @@
         @include('layouts.partials.topnav')
 
         <div class="container-fluid mt-4">
-            @includeWhen(auth()->guest(), 'layouts.partials.please-register')
-
             @yield('content')
         </div>
     </div>
