@@ -55,5 +55,10 @@ class ArtistsTableSeeder extends Seeder
             'name'      => 'Mr.A',
             'avatar'    => 'avatars/artists/MrA.jpg'
         ]);
+
+        factory(Artist::class)->create([
+            'name'      => 'Trương Thảo Nhi',
+            'avatar'    => 'avatars/artists/TruongThaoNhi.jpg'
+        ]);
     }
 }

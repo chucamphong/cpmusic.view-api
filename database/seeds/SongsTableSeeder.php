@@ -73,7 +73,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/BonChuLam.jpg',
             'url' => 'songs/BonChuLam.mp3',
-        ])->setCategory('Nhạc Trẻ')->setArtist('Trúc Nhân');
+        ])->setCategory('Nhạc Trẻ')->setArtist('Trúc Nhân', 'Trương Thảo Nhi');
 
         factory(Song::class)->create([
             'name' => 'Tìm',
