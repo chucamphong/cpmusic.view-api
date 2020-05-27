@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+// Vô hiệu hóa chức năng "Đặt lại mật khẩu"
+Auth::routes(['reset' => false]);
 
 Route::get('/', 'HomeController@index')->name('home');
 
