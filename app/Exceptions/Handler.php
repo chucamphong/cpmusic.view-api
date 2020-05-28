@@ -56,6 +56,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if (!$request->wantsJson()) {
+            return parent::render($request, $exception);
+        }
+
         if ($exception instanceof NotFoundHttpException) {
             return \response()->json([
                 'data' => [
@@ -64,7 +68,7 @@ class Handler extends ExceptionHandler
             ], 404);
         }
 
-        if ($this->isHttpException($exception) && $request->expectsJson()) {
+        if ($this->isHttpException($exception)) {
             switch (true) {
                 case ($exception instanceof TooManyRequestsHttpException):
                     return response()->json([
