@@ -10,16 +10,11 @@ class SongController extends Controller
 {
     /**
      * Trang nghe bài hát
-     * @param int $id ID bài hát
+     * @param Song|Builder $song
      * @return Renderable
      */
-    public function listen(int $id): Renderable
+    public function listen(Song $song): Renderable
     {
-        /** @var Song|Builder $song */
-        $song = Song::with('artists:name')
-            ->select('id', 'name', 'thumbnail', 'url', 'views', 'category_id')
-            ->findOrFail($id);
-
         $song->increment('views', 1);
 
         $relatedSongs = Song::with('artists:id,name')
