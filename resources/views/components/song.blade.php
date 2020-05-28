@@ -18,6 +18,7 @@
         <div class="card-body px-0 py-1">
             <a href="{{ $link }}" title="{{ $name }}">
                 <h4 class="text-truncate text-capitalize m-0">{{ $name }}</h4>
+                <h5 class="text-truncate text-capitalize m-0">{{ $song->other_name }}</h5>
             </a>
             <h5 class="text-muted text-truncate">{!! $song->artists->map(function ($artist) {
                 return "<a href='/ca-si/$artist->id'>$artist->name</a>";
