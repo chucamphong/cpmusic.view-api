@@ -14,6 +14,7 @@
     <div class="row">
         <div class="col-12 mb-3">
             <h3 class="mb-0">Đang phát bài hát: {{ $name }} - {{ $artists }}</h3>
+            <span>Lượt nghe: {{ $song->views }}</span>
         </div>
 
         <div class="col-12 mb-3">
