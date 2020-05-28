@@ -21,7 +21,8 @@
                 <h5 class="text-truncate text-capitalize m-0">{{ $song->other_name }}</h5>
             </a>
             <h5 class="text-muted text-truncate">{!! $song->artists->map(function ($artist) {
-                return "<a href='/ca-si/$artist->id'>$artist->name</a>";
+                $artistUrl = route('artist.show', $artist->id);
+                return "<a href='$artistUrl'>$artist->name</a>";
             })->join(', ') !!}</h5>
         </div>
     </div>
