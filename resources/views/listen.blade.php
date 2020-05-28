@@ -11,26 +11,30 @@
 @section('title', "$name - $artists")
 
 @section('content')
-    <div class="row">
-        <div class="col-12 mb-3">
-            <h2 class="mb-0">Đang phát bài hát: {{ $name }} - {{ $artists }}</h2>
-            <div>Lượt nghe: {{ $song->views_formatted }}</div>
-            <div>Năm phát hành: {{ $song->year }}</div>
-            <div>Thể loại: {{ $song->category->name }}</div>
-        </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <h2 class="mb-0">Đang phát bài hát: {{ $name }} - {{ $artists }}</h2>
+                    <div>Lượt nghe: {{ $song->views_formatted }}</div>
+                    <div>Năm phát hành: {{ $song->year }}</div>
+                    <div>Thể loại: {{ $song->category->name }}</div>
+                </div>
 
-        <div class="col-12 mb-3">
-            <div id="player"></div>
-        </div>
+                <div class="col-12 mt-3 mb-3">
+                    <div id="player"></div>
+                </div>
 
-        <div class="col-12 d-flex align-items-center justify-content-between mb-2">
-            <h2 class="mb-0 text-uppercase">Gợi ý</h2>
-        </div>
+                <div class="col-12 d-flex align-items-center justify-content-between mt-4 mb-2">
+                    <h2 class="mb-0 text-uppercase">Gợi ý</h2>
+                </div>
 
-    @foreach($relatedSongs as $relatedSong)
-        <!--suppress JSUnresolvedVariable -->
-            <x-song :song="$relatedSong"></x-song>
-        @endforeach
+            @foreach($relatedSongs as $relatedSong)
+                <!--suppress JSUnresolvedVariable -->
+                <x-song :song="$relatedSong"></x-song>
+            @endforeach
+            </div>
+        </div>
     </div>
 @endsection
 
