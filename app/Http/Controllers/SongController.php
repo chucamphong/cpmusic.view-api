@@ -15,7 +15,7 @@ class SongController extends Controller
      */
     public function listen(int $id): Renderable
     {
-        /** @var Song $song */
+        /** @var Song|Builder $song */
         $song = Song::with('artists:name')->findOrFail($id);
 
         $song->increment('views', 1);
