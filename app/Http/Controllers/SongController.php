@@ -18,6 +18,8 @@ class SongController extends Controller
         /** @var Song $song */
         $song = Song::with('artists:name')->findOrFail($id);
 
+        $song->increment('views', 1);
+
         $relatedSongs = Song::with('artists:id,name')
             // Tìm các bài hát có cùng nghệ sĩ
             ->whereHas('artists', function (Builder $query) use ($song) {
