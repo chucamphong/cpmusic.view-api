@@ -159,4 +159,11 @@ class Song extends Model
     {
         $this->attributes['url'] = \Str::of($url)->replace(\Storage::url(''), '');
     }
+
+    /** @noinspection PhpUnused */
+    public function getViewsFormattedAttribute(): string
+    {
+        $numberFormater = new \NumberFormatter('vi-VN', \NumberFormatter::DECIMAL);
+        return $numberFormater->format($this->views);
+    }
 }
