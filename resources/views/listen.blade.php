@@ -50,6 +50,17 @@
         .aplayer-author {
             font-size: .8rem !important;
         }
+
+        .aplayer .aplayer-pic {
+            height: 100px;
+            width: 100px;
+        }
+
+        .aplayer .aplayer-info {
+            margin-left: 100px;
+            padding: 30px 7px 0 10px;
+            height: 100px;
+        }
     </style>
 @endpush
 
