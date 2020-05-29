@@ -29,4 +29,16 @@ class SongController extends Controller
 
         return view('listen', compact('song', 'relatedSongs'));
     }
+
+    /**
+     * Trang xem bảng xếp hạng bài hát theo lượt nghe
+     * @return Renderable
+     */
+    public function mostViewed(): Renderable
+    {
+        $title = 'Bảng xếp hạng bài hát';
+        $songs = Song::with('artists')->orderByDesc('views')->limit(25)->get();
+
+        return view('top', compact('title', 'songs'));
+    }
 }

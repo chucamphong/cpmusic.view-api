@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@php
+    /** @var \App\Models\Category $category */
+@endphp
+
 @section('title', 'Trang chủ')
 
 @section('content')
@@ -33,9 +37,10 @@
     <div class="row">
         <div class="col-12 d-flex align-items-center justify-content-between mb-2">
             <h2 class="mb-0 text-uppercase">TOP Lượt nghe</h2>
-            <a href="#xem-them" class="h5 mb-0">Xem thêm</a>
+            <a href="{{ route('song.most-viewed') }}" class="h5 mb-0">Xem thêm</a>
         </div>
-        @foreach($topSongs as $key => $song)
+        @foreach($topSongs as $song)
+            <!--suppress JSUnresolvedVariable -->
             <x-song :song="$song"></x-song>
         @endforeach
     </div>
@@ -46,11 +51,8 @@
             <h2 class="mb-0 text-uppercase">Mới phát hành</h2>
             <a href="#xem-them" class="h5 mb-0">Xem thêm</a>
         </div>
-        @php
-            /** @var \App\Models\Song $song */
-            /** @var \App\Models\Artist $artist */
-        @endphp
-        @foreach($songs as $key => $song)
+        @foreach($songs as $song)
+            <!--suppress JSUnresolvedVariable -->
             <x-song :song="$song"></x-song>
         @endforeach
     </div>
@@ -61,15 +63,16 @@
             <h2 class="d-inline mb-0 text-uppercase">Thể loại</h2>
             <a href="#xem-them" class="h5 mb-0">Xem thêm</a>
         </div>
-        @php /** @var \App\Models\Category $category */ @endphp
-        @foreach($categories as $key => $category)
-            <div class="col-6 col-sm-4 col-xl-2 {{ $key >= 4 ? 'd-none d-sm-block' : null }}">
+        @foreach($categories as $category)
+            <div class="col-6 col-sm-4 col-xl-2 {{ $loop->index >= 4 ? 'd-none d-sm-block' : null }}">
                 <div class="card">
                     <a href="#test">
-                        <img class="card-img" src="{{ Storage::url($category->thumbnail) }}" alt="{{ $category->name }}">
+                        <img class="card-img" src="{{ Storage::url($category->thumbnail) }}"
+                             alt="{{ $category->name }}">
                         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <div
-                                class="card-title text-white mb-2 text-truncate font-weight-bolder text-size-xs text-size-sm text-size-md">{{ $category->name }}</div>
+                            <div class="card-title text-white mb-2 text-truncate font-weight-bolder text-size-xs text-size-sm text-size-md">
+                                {{ $category->name }}
+                            </div>
                         </div>
                     </a>
                 </div>
