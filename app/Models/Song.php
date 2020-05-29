@@ -37,6 +37,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Song whereViews($value)
  * @method static Builder|Song whereYear($value)
  * @mixin \Eloquent
+ * @property string $country
+ * @property-read string $views_formatted
+ * @method static Builder|Song whereCountry($value)
  */
 class Song extends Model
 {
@@ -44,7 +47,7 @@ class Song extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name', 'other_name', 'thumbnail', 'url', 'year', 'views',
+        'name', 'other_name', 'thumbnail', 'url', 'year', 'views', 'country',
     ];
 
     /**
