@@ -15,6 +15,7 @@ $factory->define(Song::class, function (Faker $faker) {
         'url' => $faker->url,
         'year' => $faker->year,
         'views' => $faker->randomNumber(),
+        'country' => $faker->country,
         'category_id' => Category::inRandomOrder()->first()->id,
     ];
 });

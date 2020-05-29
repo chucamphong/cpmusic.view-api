@@ -16,6 +16,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => 'Cám Tấm',
             'thumbnail' => 'songs/thumbnails/AnhOiOLai.jpg',
             'url' => 'songs/AnhOiOLai.mp3',
+            'country' => 'Việt Nam',
         ])->setCategory('Nhạc trẻ')->setArtist('Chi Pu');
 
         factory(Song::class)->create([
@@ -23,6 +24,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/CamGiacLucAySeRaSao.jpg',
             'url' => 'songs/CamGiacLucAySeRaSao.mp3',
+            'country' => 'Việt Nam',
         ])->setCategory('Nhạc trẻ')->setArtist('Lou Hoàng');
 
         factory(Song::class)->create([
@@ -30,6 +32,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/KillThisLove.jpg',
             'url' => 'songs/KillThisLove.mp3',
+            'country' => 'Hàn Quốc',
         ])->setCategory('Nhạc Hàn Quốc')->setArtist('BLACKPINK');
 
         factory(Song::class)->create([
@@ -37,6 +40,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/DuDduDuDdu.jpg',
             'url' => 'songs/DuDduDuDdu.mp3',
+            'country' => 'Hàn Quốc',
         ])->setCategory('Nhạc Hàn Quốc')->setArtist('BLACKPINK');
 
         factory(Song::class)->create([
@@ -44,6 +48,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/Boombayah.jpg',
             'url' => 'songs/Boombayah.mp3',
+            'country' => 'Hàn Quốc',
         ])->setCategory('Nhạc Hàn Quốc')->setArtist('BLACKPINK');
 
         factory(Song::class)->create([
@@ -51,6 +56,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/EmGaiMua.jpg',
             'url' => 'songs/EmGaiMua.mp3',
+            'country' => 'Việt Nam',
         ])->setCategory('Nhạc Trẻ')->setArtist('Hương Tràm');
 
         factory(Song::class)->create([
@@ -58,6 +64,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/KhongTheCungNhauSuotKiep.jpg',
             'url' => 'songs/KhongTheCungNhauSuotKiep.mp3',
+            'country' => 'Việt Nam',
         ])->setCategory('Nhạc Trẻ')->setArtist('Hòa Minzy', 'Mr Siro');
 
         factory(Song::class)->create([
@@ -65,6 +72,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/MuonKhocThatTo.jpg',
             'url' => 'songs/MuonKhocThatTo.mp3',
+            'country' => 'Việt Nam',
         ])->setCategory('Nhạc Trẻ')->setArtist('Trúc Nhân');
 
         factory(Song::class)->create([
@@ -72,6 +80,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/BonChuLam.jpg',
             'url' => 'songs/BonChuLam.mp3',
+            'country' => 'Việt Nam',
         ])->setCategory('Nhạc Trẻ')->setArtist('Trúc Nhân', 'Trương Thảo Nhi');
 
         factory(Song::class)->create([
@@ -79,6 +88,7 @@ class SongsTableSeeder extends Seeder
             'other_name' => null,
             'thumbnail' => 'songs/thumbnails/Tim.jpg',
             'url' => 'songs/Tim.mp3',
+            'country' => 'Việt Nam',
         ])->setCategory('Nhạc Trẻ')->setArtist('MIN', 'Mr.A');
     }
 }

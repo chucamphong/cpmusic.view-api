@@ -15,6 +15,7 @@ class CreateSongsTable extends Migration
             $table->string('thumbnail')->unique();
             $table->string('url')->unique();
             $table->year('year');
+            $table->string('country');
             $table->unsignedBigInteger('views')->default(0);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
