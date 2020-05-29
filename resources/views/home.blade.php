@@ -13,22 +13,23 @@
     <div class="row mb-4">
         <div class="col-12 d-flex align-items-center justify-content-between mb-2">
             <h2 class="mb-0 text-uppercase">Bảng xếp hạng</h2>
-            <a href="#xem-them" class="h5 mb-0">Xem thêm</a>
         </div>
         <div class="col-12 col-md-6 col-xl-4 mb-2">
-            <a href="#xem-them">
-                <img class="img-fluid" src="//static-zmp3.zadn.vn/dev/skins/zmp3-v5.2/images/chart-song-vn.png" alt="">
+            <a href="{{ route('song.most-viewed', ['country' => 'Việt Nam']) }}">
+                <img class="img-fluid" src="//static-zmp3.zadn.vn/dev/skins/zmp3-v5.2/images/chart-song-vn.png"
+                     alt="Bảng xếp hạng bài hát Việt Nam">
             </a>
         </div>
         <div class="col-12 col-md-6 col-xl-4 mb-2">
-            <a href="#xem-them">
-                <img class="img-fluid" src="//static-zmp3.zadn.vn/dev/skins/zmp3-v5.2/images/chart-song-us.png" alt="">
+            <a href="{{ route('song.most-viewed', ['country' => 'US-UK']) }}">
+                <img class="img-fluid" src="//static-zmp3.zadn.vn/dev/skins/zmp3-v5.2/images/chart-song-us.png"
+                     alt="Bảng xếp hạng bài hát US-UK">
             </a>
         </div>
         <div class="col-12 col-md-6 col-xl-4 mb-2 d-md-none d-xl-block">
-            <a href="#xem-them">
+            <a href="{{ route('song.most-viewed', ['country' => 'Hàn Quốc']) }}">
                 <img class="img-fluid" src="//static-zmp3.zadn.vn/dev/skins/zmp3-v5.2/images/chart-song-kpop.png"
-                     alt="">
+                     alt="Bảng xếp hạng bài hát Hàn Quốc">
             </a>
         </div>
     </div>

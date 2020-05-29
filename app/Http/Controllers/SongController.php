@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Song;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class SongController extends Controller
 {
@@ -31,13 +32,55 @@ class SongController extends Controller
     }
 
     /**
-     * Trang xem bảng xếp hạng bài hát theo lượt nghe
-     * @return Renderable
+     * Lấy bảng xếp hạng bài hát thuộc quốc gia đó
+     * @param string $country
+     * @return array
      */
-    public function mostViewed(): Renderable
+    private function getSongChartsOf(string $country): array
     {
-        $title = 'Bảng xếp hạng bài hát';
-        $songs = Song::with('artists')->orderByDesc('views')->limit(25)->get();
+        switch ($country) {
+            case 'Việt Nam':
+                $title = 'Bảng xếp hạng bài hát Việt Nam';
+                break;
+            case 'US-UK':
+                $title = 'Bảng xếp hạng bài hát US-UK';
+                break;
+            case 'Hàn Quốc':
+                $title = 'Bảng xếp hạng bài hát Hàn Quốc';
+                break;
+            default:
+                abort(404);
+                break;
+        }
+
+        $songs = Song::with('artists:id,name')
+            ->select('id', 'name', 'other_name', 'thumbnail')
+            ->where('country', '=', $country)
+            ->orderByDesc('views')
+            ->limit(25)->get();
+
+        /** @noinspection PhpUndefinedVariableInspection */
+        return [$title, $songs];
+    }
+
+    /**
+     * Trang xem bảng xếp hạng bài hát theo lượt nghe
+     * @param Request $request
+     * @return Renderable
+     * @noinspection PhpUnused
+     */
+    public function mostViewed(Request $request): Renderable
+    {
+        // Lấy bảng xếp bài hát có quốc gia X
+        if ($request->has('country')) {
+            $country = $request->get('country');
+            [$title, $songs] = $this->getSongChartsOf($country);
+        }
+        // Lấy bảng xếp bài hát không phân biệt quốc gia
+        else {
+            $title = 'Bảng xếp hạng bài hát';
+            $songs = Song::with('artists')->orderByDesc('views')->limit(25)->get();
+        }
 
         return view('top', compact('title', 'songs'));
     }
