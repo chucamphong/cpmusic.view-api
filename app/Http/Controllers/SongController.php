@@ -84,4 +84,17 @@ class SongController extends Controller
 
         return view('top', compact('title', 'songs'));
     }
+
+    /**
+     * Trang hiển thị các bài hát mới phát hành
+     */
+    public function newSongs()
+    {
+        $songs = Song::with('artists:id,name')
+            ->select(['id', 'name', 'thumbnail', 'other_name'])
+            ->orderByDesc('created_at')
+            ->paginate(25);
+
+        return view('new-songs', compact('songs'));
+    }
 }

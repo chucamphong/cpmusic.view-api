@@ -50,7 +50,7 @@
     <div class="row">
         <div class="col-12 d-flex align-items-center justify-content-between mb-2">
             <h2 class="mb-0 text-uppercase">Mới phát hành</h2>
-            <a href="#xem-them" class="h5 mb-0">Xem thêm</a>
+            <a href="{{ route('song.new-songs') }}" class="h5 mb-0">Xem thêm</a>
         </div>
         @foreach($songs as $song)
             <!--suppress JSUnresolvedVariable -->

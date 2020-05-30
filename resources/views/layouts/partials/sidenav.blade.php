@@ -22,13 +22,19 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link {{ !Route::is('home') ?: 'active' }}" href="{{ route('home') }}">
-                            <i class="ni ni-shop text-primary"></i>
+                            <i class="fas fa-h-square text-primary"></i>
                             <span class="nav-link-text">Trang Chủ</span>
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ !Route::is('song.new-songs') ?: 'active' }}" href="{{ route('song.new-songs') }}">
+                            <i class="ni ni-notification-70 text-orange"></i>
+                            <span class="nav-link-text">Mới Phát Hành</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ !Route::is('song.top-songs') ?: 'active' }}" href="#navbar-song-charts" data-toggle="collapse" role="button" aria-expanded="{{ Route::is('song.top-songs') ? 'true' : 'false' }}" aria-controls="navbar-song-charts">
-                            <i class="ni ni-ui-04 text-info"></i>
+                            <i class="fas fa-star text-yellow"></i>
                             <span class="nav-link-text">Bảng Xếp Hạng</span>
                         </a>
                         <div class="collapse {{ !Route::is('song.top-songs') ?: 'show' }}" id="navbar-song-charts">

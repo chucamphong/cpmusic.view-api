@@ -17,3 +17,6 @@ Route::get('/ca-si/{artist}', 'ArtistController@show')
 
 Route::get('/bang-xep-hang/luot-nghe', 'SongController@topSongs')
     ->name('song.top-songs');
+
+Route::get('/bai-hat/moi-phat-hanh', 'SongController@newSongs')
+    ->name('song.new-songs');
