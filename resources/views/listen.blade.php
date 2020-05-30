@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="col-12 mt-3 mb-3">
-                    <div id="player"></div>
+                    <div id="player" class="rounded"></div>
                 </div>
             </div>
         </div>
@@ -53,19 +53,33 @@
 @endsection
 
 @push('styles')
-    <!--suppress CssUnusedSymbol -->
+    <!--suppress CssUnusedSymbol, CssUnresolvedCustomProperty -->
     <style>
+        .aplayer {
+            background: var(--default);
+            color: white;
+        }
+
         .aplayer-title {
             font-size: 1rem !important;
         }
 
         .aplayer-author {
             font-size: .8rem !important;
+            color: var(--secondary) !important;
         }
 
         .aplayer .aplayer-pic {
             height: 100px;
             width: 100px;
+        }
+
+        .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+            fill: white;
+        }
+
+        .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path:hover {
+            fill: white;
         }
 
         .aplayer .aplayer-info {
@@ -77,6 +91,7 @@
 @endpush
 
 @push('scripts')
+    <!--suppress JSUnresolvedFunction -->
     <script>
         (() => {
             new APlayer({
