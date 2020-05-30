@@ -1,7 +1,7 @@
 @push('styles')
     <style type="text/css">
         .please-register {
-            background: url('http://api.cpmusic.com/assets/banner-background.svg') center / cover no-repeat;
+            background: url({{ asset('assets/banner-background.svg') }}) center / cover no-repeat;
         }
     </style>
 @endpush
