@@ -115,8 +115,8 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/e/projects/api.cpmusic/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/e/projects/api.cpmusic/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/cpmusic/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/cpmusic/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

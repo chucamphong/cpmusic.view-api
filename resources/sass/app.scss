@@ -4,6 +4,10 @@
     z-index: 999;
 }
 
+.navbar-vertical.navbar-expand-xs .navbar-nav>.nav-item>.nav-link.active {
+    background: #daecff;
+}
+
 .sidenav {
     z-index: 1000;
 }
