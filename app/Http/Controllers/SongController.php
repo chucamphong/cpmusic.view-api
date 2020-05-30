@@ -32,6 +32,42 @@ class SongController extends Controller
     }
 
     /**
+     * Trang xem bảng xếp hạng bài hát theo lượt nghe
+     * @param Request $request
+     * @return Renderable
+     * @noinspection PhpUnused
+     */
+    public function topSongs(Request $request): Renderable
+    {
+        // Lấy bảng xếp bài hát có quốc gia X
+        if ($request->has('country')) {
+            $country = $request->get('country');
+            [$title, $songs] = $this->getSongChartsOf($country);
+        }
+        // Lấy bảng xếp bài hát không phân biệt quốc gia
+        else {
+            $title = 'Bảng xếp hạng bài hát';
+            $songs = Song::with('artists')->orderByDesc('views')->limit(25)->get();
+        }
+
+        return view('top', compact('title', 'songs'));
+    }
+
+    /**
+     * Trang hiển thị các bài hát mới phát hành
+     * @noinspection PhpUnused
+     */
+    public function newSongs(): Renderable
+    {
+        $songs = Song::with('artists:id,name')
+            ->select(['id', 'name', 'thumbnail', 'other_name'])
+            ->orderByDesc('created_at')
+            ->paginate(25);
+
+        return view('new-songs', compact('songs'));
+    }
+
+    /**
      * Lấy bảng xếp hạng bài hát thuộc quốc gia đó
      * @param string $country
      * @return array
@@ -61,40 +97,5 @@ class SongController extends Controller
 
         /** @noinspection PhpUndefinedVariableInspection */
         return [$title, $songs];
-    }
-
-    /**
-     * Trang xem bảng xếp hạng bài hát theo lượt nghe
-     * @param Request $request
-     * @return Renderable
-     * @noinspection PhpUnused
-     */
-    public function topSongs(Request $request): Renderable
-    {
-        // Lấy bảng xếp bài hát có quốc gia X
-        if ($request->has('country')) {
-            $country = $request->get('country');
-            [$title, $songs] = $this->getSongChartsOf($country);
-        }
-        // Lấy bảng xếp bài hát không phân biệt quốc gia
-        else {
-            $title = 'Bảng xếp hạng bài hát';
-            $songs = Song::with('artists')->orderByDesc('views')->limit(25)->get();
-        }
-
-        return view('top', compact('title', 'songs'));
-    }
-
-    /**
-     * Trang hiển thị các bài hát mới phát hành
-     */
-    public function newSongs()
-    {
-        $songs = Song::with('artists:id,name')
-            ->select(['id', 'name', 'thumbnail', 'other_name'])
-            ->orderByDesc('created_at')
-            ->paginate(25);
-
-        return view('new-songs', compact('songs'));
     }
 }
