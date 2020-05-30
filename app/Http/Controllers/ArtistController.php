@@ -8,6 +8,18 @@ use Illuminate\Contracts\Support\Renderable;
 class ArtistController extends Controller
 {
     /**
+     * Trang hiển thị toàn bộ nghệ sĩ
+     * @return Renderable
+     */
+    public function index(): Renderable
+    {
+        $artists = Artist::select(['id', 'name', 'avatar'])
+            ->orderBy('name')->paginate();
+
+        return view('artist-index', compact('artists'));
+    }
+
+    /**
      * Trang xem thông tin một nghệ sĩ
      * @param int $artistId
      * @return Renderable

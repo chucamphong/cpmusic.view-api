@@ -11,7 +11,9 @@ Route::get('/bai-hat/{song}', 'SongController@listen')
     ->where('song', '[0-9]+')
     ->name('song.listen');
 
-Route::get('/ca-si/{artist}', 'ArtistController@show')
+Route::get('/nghe-si/', 'ArtistController@index')->name('artist.index');
+
+Route::get('/nghe-si/{artist}', 'ArtistController@show')
     ->where('artist', '[0-9]+')
     ->name('artist.show');
 

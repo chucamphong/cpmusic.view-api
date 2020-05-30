@@ -72,6 +72,12 @@
                             <span class="nav-link-text">Thể Loại</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ !Route::is('artist.index') ?: 'active' }}" href="{{ route('artist.index') }}">
+                            <i class="fab fa-artstation text-info"></i>
+                            <span class="nav-link-text">Nghệ Sĩ</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
