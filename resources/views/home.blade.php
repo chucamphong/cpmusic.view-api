@@ -62,7 +62,7 @@
     <div class="row">
         <div class="col-12 d-flex align-items-center justify-content-between mb-2">
             <h2 class="d-inline mb-0 text-uppercase">Thể loại</h2>
-            <a href="#xem-them" class="h5 mb-0">Xem thêm</a>
+            <a href="{{ route('category.index') }}" class="h5 mb-0">Xem thêm</a>
         </div>
         @foreach($categories as $category)
             <div class="col-6 col-sm-4 col-xl-2 {{ $loop->index >= 4 ? 'd-none d-sm-block' : null }}">

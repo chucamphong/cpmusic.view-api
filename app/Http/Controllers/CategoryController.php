@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function index()
+    {
+        $categories = Category::paginate();
+        return view('category-index', compact('categories'));
+    }
+
     /**
      * @param int $categoryId
      * @return Renderable
