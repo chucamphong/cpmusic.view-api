@@ -36,5 +36,25 @@ class CategoriesTableSeeder extends Seeder
             'name' => 'Nhạc Âu Mỹ',
             'thumbnail' => '/categories/NhacAuMy.jpg'
         ]);
+
+        Category::create([
+            'name' => 'EDM',
+            'thumbnail' => '/categories/EDM.jpg'
+        ]);
+
+        Category::create([
+            'name' => 'Latin',
+            'thumbnail' => '/categories/NhacLatin.jpg'
+        ]);
+
+        Category::create([
+            'name' => 'Nhạc không lời',
+            'thumbnail' => '/categories/NhacKhongLoi.jpg'
+        ]);
+
+        Category::create([
+            'name' => 'Rap',
+            'thumbnail' => '/categories/Rap.jpg'
+        ]);
     }
 }
