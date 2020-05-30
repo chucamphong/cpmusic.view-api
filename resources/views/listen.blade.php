@@ -24,15 +24,21 @@
                 <div class="col-12 mt-3 mb-3">
                     <div id="player"></div>
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
                 <div class="col-12 d-flex align-items-center justify-content-between mt-4 mb-2">
                     <h2 class="mb-0 text-uppercase">Gợi ý</h2>
                 </div>
 
-            @foreach($relatedSongs as $relatedSong)
-                <!--suppress JSUnresolvedVariable -->
-                <x-song :song="$relatedSong"></x-song>
-            @endforeach
+                @foreach($relatedSongs as $relatedSong)
+                    <!--suppress JSUnresolvedVariable -->
+                    <x-song :song="$relatedSong"></x-song>
+                @endforeach
             </div>
         </div>
     </div>
