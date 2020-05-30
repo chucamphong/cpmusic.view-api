@@ -10,8 +10,8 @@
     $thumbnail = Storage::url($song->thumbnail);
 @endphp
 
-<div class="col-6 col-sm-4 col-md-4 col-lg-2">
-    <div class="card bg-transparent shadow-none">
+<div class="col-6 col-sm-4 col-lg-2">
+    <div class="card bg-transparent shadow-none mb-0">
         <a href="{{ $link }}" title="{{ $name }}">
             <img src="{{ $thumbnail }}" alt="{{ $name }}" class="card-img-top img-fluid">
         </a>
