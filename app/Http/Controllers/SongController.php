@@ -6,6 +6,7 @@ use App\Models\Song;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class SongController extends Controller
 {
@@ -43,8 +44,7 @@ class SongController extends Controller
         if ($request->has('country')) {
             $country = $request->get('country');
             [$title, $songs] = $this->getSongChartsOf($country);
-        }
-        // Lấy bảng xếp bài hát không phân biệt quốc gia
+        } // Lấy bảng xếp bài hát không phân biệt quốc gia
         else {
             $title = 'Bảng xếp hạng bài hát';
             $songs = Song::with('artists')->orderByDesc('views')->limit(25)->get();
@@ -65,6 +65,41 @@ class SongController extends Controller
             ->paginate(25);
 
         return view('new-songs', compact('songs'));
+    }
+
+    /**
+     * Trang tìm kiếm bài hát theo tên bài hát hoặc tên nghệ sĩ
+     * @param Request $request
+     * @return Renderable|Redirector
+     * @noinspection PhpUnused
+     */
+    public function findSong(Request $request)
+    {
+        if (!$request->has('keyword')) {
+            return redirect(route('home'));
+        }
+
+        $keyword = $request->get('keyword');
+
+        // Nếu $keyword để trống thì lấy tất cả
+        if (\Str::of($keyword)->isEmpty()) {
+            $songs = Song::query();
+        }
+        // Tìm kiếm theo $keyword
+        else {
+            $songs = Song::where('name', 'LIKE', "%$keyword%")
+                ->orWhere('other_name', 'LIKE', "%$keyword%")
+                ->orWhereHas('artists', function (Builder $query) use ($keyword) {
+                    return $query->where('name', 'LIKE', "%$keyword%");
+                });
+        }
+
+        $songs = $songs->with('artists:id,name')
+            ->orderByDesc('created_at')
+            ->paginate()
+            ->appends($request->only('keyword'));
+
+        return view('song-find', compact('songs'));
     }
 
     /**

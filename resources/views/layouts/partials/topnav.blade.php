@@ -1,6 +1,23 @@
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form method="get" action="{{ route('song.find') }}"
+                  class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative input-group-merge">
+                        <label for="find-song" class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </label>
+                        <input id="find-song" name="keyword" class="form-control"
+                               placeholder="Tìm kiếm theo tên bài hát, tên nghệ sĩ" type="text"/>
+                    </div>
+                </div>
+                <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main"
+                        aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </form>
+
             <!-- Navbar links -->
             <ul class="navbar-nav align-items-center  ml-md-auto ">
                 <li class="nav-item d-xl-none">
@@ -39,7 +56,7 @@
                             <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
                                 @if (Auth::getUser()->avatar)
-                                    <img src="{{ Auth::getUser()->avatar }}" alt="{{ Auth::getUser()->name }}" />
+                                    <img src="{{ Auth::getUser()->avatar }}" alt="{{ Auth::getUser()->name }}"/>
                                 @else
                                     <i class="ni ni-single-02"></i>
                                 @endif
