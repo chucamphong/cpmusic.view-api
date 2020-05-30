@@ -20,3 +20,7 @@ Route::get('/bang-xep-hang/luot-nghe', 'SongController@topSongs')
 
 Route::get('/bai-hat/moi-phat-hanh', 'SongController@newSongs')
     ->name('song.new-songs');
+
+Route::get('/the-loai/{category}', 'CategoryController@show')
+    ->where('category', '[0-9]+')
+    ->name('category.show');

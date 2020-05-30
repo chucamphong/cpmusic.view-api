@@ -66,17 +66,8 @@
         </div>
         @foreach($categories as $category)
             <div class="col-6 col-sm-4 col-xl-2 {{ $loop->index >= 4 ? 'd-none d-sm-block' : null }}">
-                <div class="card">
-                    <a href="#test">
-                        <img class="card-img" src="{{ Storage::url($category->thumbnail) }}"
-                             alt="{{ $category->name }}">
-                        <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                            <div class="card-title text-white mb-2 text-truncate font-weight-bolder text-size-xs text-size-sm text-size-md">
-                                {{ $category->name }}
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                <!--suppress HtmlUnknownTag, JSUnresolvedVariable -->
+                <x-category :category="$category"></x-category>
             </div>
         @endforeach
     </div>
