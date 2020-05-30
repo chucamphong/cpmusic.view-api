@@ -66,6 +66,12 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ !Route::is('category.index') ?: 'active' }}" href="{{ route('category.index') }}">
+                            <i class="ni ni-tag text-success"></i>
+                            <span class="nav-link-text">Thể Loại</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
