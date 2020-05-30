@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
+use Illuminate\Contracts\Support\Renderable;
 
 class ArtistController extends Controller
 {
-    public function show(int $artistId)
+    /**
+     * Trang xem thông tin một nghệ sĩ
+     * @param int $artistId
+     * @return Renderable
+     */
+    public function show(int $artistId): Renderable
     {
         /** @var Artist $artist */
         $artist = Artist::withCount('songs')
