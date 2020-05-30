@@ -89,23 +89,15 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item nav-link">
-                        <i class="ni ni-palette"></i>
-                        <span class="nav-link-text">
-                            Giao diện:
-                            <a href="https://www.creative-tim.com/product/argon-dashboard-pro" class="font-weight-bold"
-                               target="_blank">Argon Premium</a>
-                        </span>
+                        <i class="ni ni-folder-17"></i>
+                        <span class="nav-link-text">Đồ án cơ sở</span>
                     </li>
                     <li class="nav-item nav-link">
                         <i class="ni ni-spaceship"></i>
                         <span class="nav-link-text">
-                            Sở hữu:
+                            Liên hệ:
                             <a href="https://fb.com/chuphong1999" class="font-weight-bold" target="_blank">Chu Phong</a>
                         </span>
-                    </li>
-                    <li class="nav-item nav-link">
-                        <i class="ni ni-chart-pie-35"></i>
-                        <span class="nav-link-text">Phiên bản: 0.0.1</span>
                     </li>
                 </ul>
             </div>
