@@ -69,7 +69,7 @@ class SongController extends Controller
      * @return Renderable
      * @noinspection PhpUnused
      */
-    public function mostViewed(Request $request): Renderable
+    public function topSongs(Request $request): Renderable
     {
         // Lấy bảng xếp bài hát có quốc gia X
         if ($request->has('country')) {

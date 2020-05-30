@@ -15,5 +15,5 @@ Route::get('/ca-si/{artist}', 'ArtistController@show')
     ->where('artist', '[0-9]+')
     ->name('artist.show');
 
-Route::get('/bang-xep-hang/luot-nghe', 'SongController@mostViewed')
-    ->name('song.most-viewed');
+Route::get('/bang-xep-hang/luot-nghe', 'SongController@topSongs')
+    ->name('song.top-songs');
