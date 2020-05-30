@@ -34,6 +34,17 @@
         </div>
     </div>
 
+    <!-- Hôm nay nghe gì? -->
+    <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-between mb-2">
+            <h2 class="mb-0 text-uppercase">Hôm nay nghe gì?</h2>
+        </div>
+        @foreach($randomSongs as $song)
+            <!--suppress JSUnresolvedVariable -->
+            <x-song :song="$song"></x-song>
+        @endforeach
+    </div>
+
     <!-- TOP Lượt nghe -->
     <div class="row">
         <div class="col-12 d-flex align-items-center justify-content-between mb-2">
