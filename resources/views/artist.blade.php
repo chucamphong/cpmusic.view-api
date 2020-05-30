@@ -12,12 +12,11 @@
             <span class="h4 text-muted">{{ $artist->songs_count }}</span>
             <span class="h5 text-uppercase ls-1 text-muted">bài hát</span>
         </div>
-        <div class="col-12">
-            @foreach ($songs as $song)
-                <!--suppress JSUnresolvedVariable -->
-                <x-song-row :song="$song"></x-song-row>
-            @endforeach
-        </div>
+
+        @foreach ($songs as $song)
+            <!--suppress JSUnresolvedVariable -->
+            <x-song :song="$song"></x-song>
+        @endforeach
 
         <div class="col-12 d-flex justify-content-center">
             {{ $songs->links() }}
