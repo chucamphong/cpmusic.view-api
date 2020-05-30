@@ -18,7 +18,11 @@
                     <h2 class="mb-0">Đang phát bài hát: {{ $name }} - {{ $artists }}</h2>
                     <div>Lượt nghe: {{ $song->views_formatted }}</div>
                     <div>Năm phát hành: {{ $song->year }}</div>
-                    <div>Thể loại: {{ $song->category->name }}</div>
+                    <div>Thể loại:
+                        <a href="{{ route('category.show', $song->category_id) }}">
+                            {{ $song->category->name }}
+                        </a>
+                    </div>
                 </div>
 
                 <div class="col-12 mt-3 mb-3">
