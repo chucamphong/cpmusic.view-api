@@ -27,28 +27,34 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ !Route::is('song.most-viewed') ?: 'active' }}" href="#navbar-song-charts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-song-charts">
+                        <a class="nav-link {{ !Route::is('song.most-viewed') ?: 'active' }}" href="#navbar-song-charts" data-toggle="collapse" role="button" aria-expanded="{{ Route::is('song.most-viewed') ? 'true' : 'false' }}" aria-controls="navbar-song-charts">
                             <i class="ni ni-ui-04 text-info"></i>
                             <span class="nav-link-text">Bảng Xếp Hạng</span>
                         </a>
-                        <div class="collapse" id="navbar-song-charts">
+                        <div class="collapse {{ !Route::is('song.most-viewed') ?: 'show' }}" id="navbar-song-charts">
                             <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('song.most-viewed') }}" class="nav-link">
+                                        <span class="sidenav-mini-icon">L</span>
+                                        <span class="sidenav-normal">Lượt nghe nhiều nhất</span>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ route('song.most-viewed', ['country' => 'Việt Nam']) }}" class="nav-link">
                                         <span class="sidenav-mini-icon">V</span>
-                                        <span class="sidenav-normal">Việt Nam</span>
+                                        <span class="sidenav-normal">Bài hát Việt Nam</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('song.most-viewed', ['country' => 'US-UK']) }}" class="nav-link">
                                         <span class="sidenav-mini-icon">U</span>
-                                        <span class="sidenav-normal">US-UK</span>
+                                        <span class="sidenav-normal">Bài hát US-UK</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('song.most-viewed', ['country' => 'Hàn Quốc']) }}" class="nav-link">
                                         <span class="sidenav-mini-icon">Hàn Quốc</span>
-                                        <span class="sidenav-normal">Hàn Quốc</span>
+                                        <span class="sidenav-normal">Bài hát Hàn Quốc</span>
                                     </a>
                                 </li>
                             </ul>
