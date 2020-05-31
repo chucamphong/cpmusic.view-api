@@ -111,7 +111,7 @@ return [
         'array' => 'The :attribute must contain :size items.',
     ],
     'starts_with' => 'The :attribute must start with one of the following: :values.',
-    'string' => 'The :attribute must be a string.',
+    'string' => ':Attribute phải là một chuỗi ký tự.',
     'timezone' => 'The :attribute must be a valid zone.',
     'unique' => ':Attribute đã tồn tại',
     'uploaded' => 'The :attribute failed to upload.',
@@ -151,6 +151,7 @@ return [
     'attributes' => [
         'email' => 'địa chỉ Email',
         'password' => 'mật khẩu',
+        'name' => 'tên hiển thị',
     ],
 
 ];
