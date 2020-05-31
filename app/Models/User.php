@@ -76,6 +76,14 @@ class User extends Authenticatable
     /**
      * @noinspection PhpUnused
      */
+    public function setAvatarAttribute(string $url)
+    {
+        $this->attributes['avatar'] = \Str::of($url)->replace(\Storage::url(''), '');
+    }
+
+    /**
+     * @noinspection PhpUnused
+     */
     public function setPasswordAttribute(string $password)
     {
         $this->attributes['password'] = \Hash::needsRehash($password) ? \Hash::make($password) : $password;
