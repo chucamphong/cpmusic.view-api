@@ -11,7 +11,14 @@
                     <small>Chỉnh sửa thông tin tài khoản cá nhân</small>
                 </div>
                 <div class="card-body">
-                    {{ session('status') }}
+                    @if (session()->exists('status'))
+                        <div class="alert alert-{{ session('status') }} alert-dismissible fade show" role="alert">
+                            <span class="alert-text">{{ session('msg') }}</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    @endif
                     <form method="post" action="{{ route('account.update') }}" enctype="multipart/form-data">
                         @csrf
 
@@ -71,8 +78,13 @@
 
                             <div class="col-md-9">
                                 <div class="custom-file">
-                                    <input name="avatar" type="file" class="custom-file-input" id="avatar" lang="en" />
+                                    <input name="avatar" type="file" class="custom-file-input @error('avatar') is-invalid @enderror" id="avatar" lang="en" accept="image/png, image/jpeg" />
                                     <label class="custom-file-label" for="avatar"></label>
+                                    @error('avatar')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

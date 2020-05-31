@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\User\UpdateRequest;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
@@ -22,6 +21,10 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'name' => ['string', 'min:8', 'max:255'],
+            'avatar' => ['image', 'mimes:jpeg,jpg,png', 'max:2048']
+        ]);
         $data = $request->only('name');
         $avatar = $request->file('avatar');
 
@@ -34,9 +37,11 @@ class UserController extends Controller
         }
 
         if ($request->user()->update($data)) {
-            $request->session()->flash('status', 'Cập nhật tài khoản hoàn tất');
+            $request->session()->flash('status', 'success');
+            $request->session()->flash('msg', 'Cập nhật tài khoản hoàn tất');
         } else {
-            $request->session()->flash('status', 'Cập nhật tài khoản thất bại');
+            $request->session()->flash('status', 'error');
+            $request->session()->flash('msg', 'Cập nhật tài khoản thất bại');
         }
 
         return redirect()->route('account.index');
