@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Trang hiển thị thông tin tài khoản
      * @param Request $request
@@ -19,6 +24,11 @@ class UserController extends Controller
         return view('account.index', compact('user'));
     }
 
+    /**
+     * Cập nhật thông tin tài khoản
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $request->validate([
@@ -61,6 +71,7 @@ class UserController extends Controller
      * Xử lý cập nhật mật khẩu
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @noinspection PhpUnused
      */
     public function updatePassword(Request $request)
     {
@@ -69,6 +80,8 @@ class UserController extends Controller
         ]);
 
         if ($request->user()->update($request->only('password'))) {
+            // Đăng xuất nếu đổi mật khẩu thành công
+            \Auth:: logout();
             return redirect()->route('account.change-password')->with([
                 'status' => 'success',
                 'message' => 'Đổi mật khẩu thành công'
