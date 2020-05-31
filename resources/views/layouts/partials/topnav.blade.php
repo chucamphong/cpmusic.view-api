@@ -56,7 +56,7 @@
                             <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
                                 @if (Auth::getUser()->avatar)
-                                    <img src="{{ Auth::getUser()->avatar }}" alt="{{ Auth::getUser()->name }}"/>
+                                    <img src="{{ Storage::url(Auth::getUser()->avatar) }}" alt="{{ Auth::getUser()->name }}"/>
                                 @else
                                     <i class="ni ni-single-02"></i>
                                 @endif
@@ -70,6 +70,11 @@
                             <div class="dropdown-header noti-title">
                                 <h6 class="text-overflow m-0">Xin chào!</h6>
                             </div>
+                            <a href="{{ route('account.index') }}" class="dropdown-item">
+                                <i class="ni ni-badge"></i>
+                                <span>Thông tin</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
                             <a id="logoutBtn" href="{{ route('logout') }}" class="dropdown-item">
                                 <i class="ni ni-user-run"></i>
                                 <span>Đăng xuất</span>

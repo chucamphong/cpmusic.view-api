@@ -30,3 +30,6 @@ Route::get('/the-loai', 'CategoryController@index')->name('category.index');
 Route::get('/the-loai/{category}', 'CategoryController@show')
     ->where('category', '[0-9]+')
     ->name('category.show');
+
+Route::get('/tai-khoan', 'UserController@index')->name('account.index');
+Route::post('/tai-khoan', 'UserController@update')->name('account.update');
