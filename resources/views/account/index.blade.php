@@ -84,6 +84,7 @@
                     </form>
                 </div>
             </div>
+            <a href="{{ route('account.change-password') }}">Đổi mật khẩu</a>
         </div>
     </div>
 @endsection

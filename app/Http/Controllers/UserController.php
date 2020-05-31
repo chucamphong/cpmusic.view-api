@@ -46,4 +46,38 @@ class UserController extends Controller
 
         return redirect()->route('account.index');
     }
+
+    /**
+     * Trang đổi mật khẩu
+     * @return Renderable
+     * @noinspection PhpUnused
+     */
+    public function changePassword(): Renderable
+    {
+        return view('account.change-password');
+    }
+
+    /**
+     * Xử lý cập nhật mật khẩu
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
+        ]);
+
+        if ($request->user()->update($request->only('password'))) {
+            return redirect()->route('account.change-password')->with([
+                'status' => 'success',
+                'message' => 'Đổi mật khẩu thành công'
+            ]);
+        } else {
+            return redirect()->route('account.change-password')->with([
+                'status' => 'error',
+                'message' => 'Đổi mật khẩu thất bại'
+            ]);
+        }
+    }
 }

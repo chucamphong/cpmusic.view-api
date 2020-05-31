@@ -33,3 +33,5 @@ Route::get('/the-loai/{category}', 'CategoryController@show')
 
 Route::get('/tai-khoan', 'UserController@index')->name('account.index');
 Route::post('/tai-khoan', 'UserController@update')->name('account.update');
+Route::get('/tai-khoan/doi-mat-khau', 'UserController@changePassword')->name('account.change-password');
+Route::post('/tai-khoan/doi-mat-khau', 'UserController@updatePassword')->name('account.update-password');
