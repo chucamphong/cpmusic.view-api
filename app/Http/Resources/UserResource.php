@@ -21,7 +21,7 @@ class UserResource extends JsonResource
                 'email' => $this->email
             ]),
             $this->mergeWhen($this->avatar, [
-                'avatar' => $this->avatar
+                'avatar' => \Storage::url($this->avatar)
             ]),
             $this->mergeWhen($this->email_verified_at, [
                 'email_verified_at' => $this->email_verified_at
