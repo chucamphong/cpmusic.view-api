@@ -7,7 +7,7 @@
 @section('content')
     <div class="row">
         <div class="col-12 d-flex align-items-center justify-content-between mb-2">
-            <h2 class="mb-0 text-uppercase text-truncate">Tìm kiếm: {{ Request::get('name') }}</h2>
+            <h2 class="mb-0 text-uppercase text-truncate">Tìm kiếm: {{ Request::get('keyword') }}</h2>
         </div>
 
         @if ($songs->isEmpty())
