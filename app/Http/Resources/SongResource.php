@@ -36,6 +36,9 @@ class SongResource extends JsonResource
             $this->mergeWhen($this->category, [
                 'category' => $this->category->name
             ]),
+            $this->mergeWhen($this->country, [
+                'country' => $this->country
+            ]),
             $this->mergeWhen($this->artists, [
                 'artists' => $this->artists->map(function ($artist) {
                     return $artist->name;

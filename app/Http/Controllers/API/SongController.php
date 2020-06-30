@@ -28,7 +28,7 @@ class SongController extends Controller
     {
         $songs = QueryBuilder::for(Song::class)
             ->allowedFields(
-                'id', 'name', 'other_name', 'thumbnail', 'url', 'year', 'views', 'category_id',
+                'id', 'name', 'other_name', 'thumbnail', 'url', 'year', 'views', 'country', 'category_id',
                 'artists.name', 'artists.thumbnail',
                 'category.id', 'category.name'
             )
