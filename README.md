@@ -15,3 +15,6 @@ Repo này đảm nhiệm API và trang nghe nhạc
 ```
 artisan migrate:fresh --seed
 ```
+
+## Liên quan:
+https://github.com/do-an-co-so/cpmusic.admin
