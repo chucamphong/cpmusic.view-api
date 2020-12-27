@@ -1,5 +1,7 @@
-# Đồ án cơ sở
+# Đồ án cơ sở (Ngưng phát triển)
 ## Trang web nghe nhạc trực tuyến CPMusic
+
+Repo này đảm nhiệm API và trang nghe nhạc
 
 ## Thành viên:
 - Chu Cẩm Phong
